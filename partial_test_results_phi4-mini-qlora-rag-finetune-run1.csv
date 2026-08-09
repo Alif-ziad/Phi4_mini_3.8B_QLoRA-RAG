@@ -9107,3 +9107,607 @@ def task_func(directory, backup_dir='/path/to/backup'):
 
     return backup_file"
 749,other,False,"rs = self . _graph_db . _send ( rest . Request ( self . _graph_db , ""POST"" , self . _graph_db . _batch_uri , [ request . description ( id_ ) for id_ , request in enumerate ( self . requests ) ] , { 'X-Stream' : True } ) . get_result ( ) )","rs = self . _graph_db . _send ( rest . Request ( self . _graph_db , ""POST"" , self . _graph_db . _batch_uri , [ request . description ( id_ ) for id_ , request in enumerate ( self . requests ) ] , { 'X-Stream' : 'true' } ) )"
+750,unknown,True,"import subprocess
+import time
+import threading
+def task_func(file_list):
+
+
+    exit_codes = []
+
+    def execute_file(file):
+        file_path = file
+        process = subprocess.Popen(file_path)
+        time.sleep(1)  # wait for the process to start
+        exit_codes.append(process.poll())  # store the exit code
+
+    # Start a thread for each file
+    threads = [threading.Thread(target=execute_file, args=(file,)) for file in file_list]
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    return exit_codes","import subprocess
+import time
+import threading
+def task_func(file_list):
+
+
+    exit_codes = []
+
+    def execute_file(file):
+        file_path = file
+        process = subprocess.Popen(file_path)
+        time.sleep(1)  # wait for the process to start
+        exit_codes.append(process.poll())  # store the exit code
+
+    # Start a thread for each file
+    threads = [threading.Thread(target=execute_file, args=(file,)) for file in file_list]
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    return exit_codes"
+751,other,False,"assert np . allclose ( _normalize_column_probability ( transition_matrix ) . sum ( axis = 0 ) , expected ) and np . allclose ( _normalize_column_probability ( transition_matrix ) . sum ( ) , 1. )","assert np . allclose ( _normalize_column_probability ( transition_matrix ) . sum ( axis = 1 ) , expected )"
+752,build_package_merge,True,"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+753,other,False,"lar_data = [ line . strip ( ""\r\n"" ) . split ( ""|"" ) for line in lar_rows ]","lar_data = [ line . strip ( ""\n"" ) . split ( ""|"" ) for line in lar_rows ]"
+754,unknown,True,"class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i","class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        is_added = [False] * k
+        count = 0
+        n = len(nums)
+        for i in range(n - 1, -1, -1):
+            if nums[i] > k or is_added[nums[i] - 1]:
+                continue
+            is_added[nums[i] - 1] = True
+            count += 1
+            if count == k:
+                return n - i"
+755,other,True,"return Response ( { ""error"" : ""Please format"" , ""format"" : { ""sentence"" : ""Hello"" } , ""data"" : request . data } )","return Response ( { ""error"" : ""Please format"" , ""format"" : { ""sentence"" : ""Hello"" } , ""data"" : request . data } )"
+756,unknown,True,"class Solution:
+    def countPartitions(self, nums: List[int]) -> int:
+        l, r = 0, sum(nums)
+        ans = 0
+        for x in nums[:-1]:
+            l += x
+            r -= x
+            ans += (l - r) % 2 == 0
+        return ans","class Solution:
+    def countPartitions(self, nums: List[int]) -> int:
+        l, r = 0, sum(nums)
+        ans = 0
+        for x in nums[:-1]:
+            l += x
+            r -= x
+            ans += (l - r) % 2 == 0
+        return ans"
+757,other,False,"self . eeagent_client . cleanup_process ( sender , upid , self . _process )","self . eeagent_client . cleanup_process ( sender , upid , round )"
+758,algorithm,True,"import pandas as pd
+import regex as re
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(text):
+
+    sentences = re.split(r""\.\s*"", text)
+    sentences = [sentence for sentence in sentences if len(sentence.strip()) != 0]
+    vectorizer = CountVectorizer()
+    dtm = vectorizer.fit_transform(sentences)
+    df = pd.DataFrame(dtm.toarray(), columns=vectorizer.get_feature_names_out())
+    return df","import pandas as pd
+import regex as re
+from sklearn.feature_extraction.text import CountVectorizer
+def task_func(text):
+
+    sentences = re.split(r""\.\s*"", text)
+    sentences = [sentence for sentence in sentences if len(sentence.strip()) != 0]
+    vectorizer = CountVectorizer()
+    dtm = vectorizer.fit_transform(sentences)
+    df = pd.DataFrame(dtm.toarray(), columns=vectorizer.get_feature_names_out())
+    return df"
+759,other,False,"data_dir = join ( from_import ( 'test' , 'data' ) . __path__ , 'data' ) [ 0 ]","data_dir = join ( * from_import ( 'test' , 'data' ) . __path__ ) [ 0 ]"
+760,other,False,"self . logSender ( 'Not adding %sender% ({})' . format ( sender , res ) )","self . logSender ( 'Not adding %sender% ({})' . format ( res ) , i )"
+761,algorithm,False,"col_inserted_indices = self . inserted_dim_inds ( transforms , 1 )","col_inserted_indices = ( self . inserted_dim_inds ( transforms , 1 ) ) if np . any ( row_margin ) else [ ]"
+762,other,False,"subprocess . Popen ( ( 'sudo apt-get install %s --yes' % ( stack_to_debs ( stack , options . rosdistro ) ) ) . split ( ' ' ) ) . communicate ( )","subprocess . Popen ( ( 'sudo apt-get install %s --yes' % ( stack_to_deb ( stack , options . rosdistro ) ) ) . split ( ' ' ) ) . communicate ( )"
+763,type,False,"emoji_variants . add ( [ 0x2640 , 0x2642 , 0x2695 ] , 0 )","emoji_variants . union ( set ( [ 0x2640 , 0x2642 , 0x2695 ] ) )"
+764,other,False,"self . _py2 = self . nvim . vars ( ""get(g:,'python_host_prog','python2')"" ) or self . nvim . vars ( ""get(g:,'python_host_prog','python')"" )","self . _py2 = self . nvim . eval ( ""get(g:,'python_host_prog','python2')"" )"
+765,unknown,True,"class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c', ..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (newCount[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD","class Solution:
+  def lengthAfterTransformations(self, s: str, t: int) -> int:
+    MOD = 1_000_000_007
+    count = [0] * 26
+
+    for c in s:
+      count[ord(c) - ord('a')] += 1
+
+    for _ in range(t):
+      newCount = [0] * 26
+      # 'a' -> 'b', 'b' -> 'c', ..., 'y' -> 'z'
+      for i in range(25):
+        newCount[i + 1] = count[i]
+      # 'z' -> 'ab'
+      newCount[0] = count[25]
+      newCount[1] = (newCount[1] + count[25]) % MOD
+      count = newCount
+
+    return sum(count) % MOD"
+766,unknown,False,"from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+        
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        plt.show()
+        return kmeans, selected_df
+    else:
+        selected_df[""Cluster""] = 0
+        return None, selected_df","from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        selected_df[""Cluster""] = 0
+        return selected_df, None"
+767,other,False,"cancer_gt , healthy_gt = vcf_record . genotype ( options . tumor ) , vcf_record . genotype ( options . normal ) if options . normal else None","cancer_gt , healthy_gt = vcf_record . genotype ( options . tumor ) [ ""GT"" ] , vcf_record . genotype ( options . normal ) [ ""GT"" ]"
+768,other,False,"urlpatterns = patterns ( '' , url ( r'^%s/couch_select/$' % _PREFIX , 'couchdebugpanels.views.couch_select' , name = 'couch_select' ) , )","urlpatterns = patterns ( '' , url ( r'^%s/couch_select/$' % _PREFIX , 'couchdebugpanel.views.couch_select' , name = 'couch_select' ) , )"
+769,type,False,"self . ITEM_properties [ ""meta"" ] = str ( cursor_line [ 2 ] )","self . ITEM_properties [ ""meta"" ] = int ( cursor_line [ 2 ] )"
+770,other,False,"raise Exception ( ""Scaling factor is "" + str ( ave ) )","raise Exception ( ""Scaling factor error:\n"" + str ( e ) )"
+771,other,False,"imageSearch = compile ( tagre ( ""img"" , ""src"" , r'(http://maxcdn\.zenpencils\.com/comics/\d+-\d+-\d+[^""]+)' ) , re . IGNORECASE )","imageSearch = compile ( tagre ( ""img"" , ""src"" , r'(http://zenpencils\.com/comics/\d+-\d+-\d+[^""]+)' ) )"
+772,unknown,False,"class Solution:
+  def maxPathLength(self, coordinates: list[list[int]], k: int) -> int:
+    xk, yk = coordinates[k]
+    leftCoordinates = [(x, y) for x, y in coordinates if x < xk and y < yk]
+    rightCoordinates = [(x, y) for x, y in coordinates if x > xk and y > yk]
+    return (1 +
+            self._lengthOfLIS(leftCoordinates) +
+            self._lengthOfLIS(rightCoordinates))
+
+  # Similar to 300. Longest Increasing Subsequence
+  def _lengthOfLIS(self, coordinates: list[tuple[int, int]]) -> int:
+    coordinates.sort(key=lambda x: (x[0], x[1]))
+    # tail[i] := the minimum tail of all the increasing subsequences having
+    # length i + 1
+    tail = []
+    for _, y in coordinates:
+      if not tail or y > tail[-1]:
+        tail.append(y)
+      else:
+        tail[bisect.bisect_right(tail, y)] = y
+    return len(tail)","class Solution:
+  def maxPathLength(self, coordinates: list[list[int]], k: int) -> int:
+    xk, yk = coordinates[k]
+    leftCoordinates = [(x, y) for x, y in coordinates if x < xk and y < yk]
+    rightCoordinates = [(x, y) for x, y in coordinates if x > xk and y > yk]
+    return (1 +
+            self._lengthOfLIS(leftCoordinates) +
+            self._lengthOfLIS(rightCoordinates))
+
+  # Similar to 300. Longest Increasing Subsequence
+  def _lengthOfLIS(self, coordinates: list[tuple[int, int]]) -> int:
+    coordinates.sort(key=lambda x: (x[0], -x[1]))
+    # tail[i] := the minimum tail of all the increasing subsequences having
+    # length i + 1
+    tail = []
+    for _, y in coordinates:
+      if not tail or y > tail[-1]:
+        tail.append(y)
+      else:
+        tail[bisect.bisect_left(tail, y)] = y
+    return len(tail)"
+773,build_package_merge,True,"class Solution:
+    def checkArray(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        d = [0] * (n + 1)
+        s = 0
+        for i, x in enumerate(nums):
+            s += d[i]
+            x += s
+            if x == 0:
+                continue
+            if x < 0 or i + k > n:
+                return False
+            s -= x
+            d[i + k] += x
+        return True","class Solution:
+    def checkArray(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        d = [0] * (n + 1)
+        s = 0
+        for i, x in enumerate(nums):
+            s += d[i]
+            x += s
+            if x == 0:
+                continue
+            if x < 0 or i + k > n:
+                return False
+            s -= x
+            d[i + k] += x
+        return True"
+774,other,True,"login_manager . login_message = u""Please sign in to access this page.""","login_manager . login_message = u""Please sign in to access this page."""
+775,unknown,False,"from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = dq[-1].startX, dq[-1].startY
+        length = dq[-1].length
+        while dq and abs(x - dq[-1].end","from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Sequence:
+  startX: int
+  startY: int
+  endX: int
+  endY: int
+  length: int
+
+  def __iter__(self):
+    yield self.startX
+    yield self.startY
+    yield self.endX
+    yield self.endY
+    yield self.length
+
+
+class Solution:
+  def maxDistance(self, side: int, points: list[list[int]], k: int) -> int:
+    ordered = self._getOrderedPoints(side, points)
+
+    def isValidDistance(m: int) -> bool:
+      """"""
+      Returns True if we can select `k` points such that the minimum Manhattan
+      distance between any two consecutive chosen points is at least `m`.
+      """"""
+      dq = collections.deque([Sequence(*ordered[0], *ordered[0], 1)])
+      maxLength = 1
+
+      for i in range(1, len(ordered)):
+        x, y = ordered[i]
+        startX, startY = ordered[i]
+        length = 1
+        while dq and abs(x - dq[0].endX) + abs(y - dq[0].endY) >= m:
+          if (abs(x - dq[0].startX) + abs(y - dq[0].startY) >= m
+                  and dq[0].length + 1 >= length):
+            startX = dq[0].startX
+            startY = dq[0].startY
+            length = dq[0].length + 1
+            maxLength = max(maxLength, length)
+          dq.popleft()
+        dq.append(Sequence(startX, startY, x, y, length))
+
+      return maxLength >= k
+
+    l = 0
+    r = side
+
+    while l < r:
+      m = (l + r + 1) // 2
+      if isValidDistance(m):
+        l = m
+      else:
+        r = m - 1
+
+    return l
+
+  def _getOrderedPoints(self, side: int, points: list[list[int]]) -> list[list[int]]:
+    """"""
+    Returns the ordered points on the perimeter of a square of side length
+    `side`, starting from left, top, right, and bottom boundaries.
+    """"""
+    left = sorted([(x, y) for x, y in points if x == 0 and y > 0])
+    top = sorted([(x, y) for x, y in points if x > 0 and y == side])
+    right = sorted([(x, y) for x, y in points if x == side and y < side],
+                   reverse=True)
+    bottom = sorted([(x, y) for x, y in points if y == 0], reverse=True)
+    return left + top + right + bottom"
+776,other,True,"""""""
+         task.create_source(self.target, self._preload_image(), datapusher)
+ 
+     def start_supporting_containers(self, log_syslog=False):
+         """"""","""""""
+         task.create_source(self.target, self._preload_image(), datapusher)
+ 
+     def start_supporting_containers(self, log_syslog=False):
+         """""""
+777,other,False,bmob_user = onecard_user . bmobusers . get ( pk = data [ 'bmob' ] ) . user,bmob_user = onecard_user . bmobusers . get ( bmob_user = data [ 'bmob' ] )
+778,other,False,"invul_veld = input_error_correction ( invul_veld , moeilijkheidsgraad , 0.5 )","invul_veld = input_error_correction_veld ( invul_veld , moeilijkheidsgraad )"
+779,other,False,"_check_ids = self . env ( 'cic.check.receipt' ) . search ( [ ( 'partner_id' , '=' , i . partner_id . id ) , ( 'state' , 'in' , [ 'received' , 'submitted' , 'resubmitted' , 'cancelled' ] ) ] )","_check_ids = self . env [ 'cic.check.receipt' ] . search ( [ ( 'partner_id' , '=' , i . partner_id . id ) , ( 'state' , 'in' , [ 'received' , 'submitted' , 'resubmitted' ] ) ] )"
+780,assignment,False,"self . setup_cache [ host ] = result . get ( 'ansible_facts' , { } ) or { }","self . setup_cache [ host ] . update ( result . get ( 'ansible_facts' , { } ) )"
+781,unknown,True,"class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans","class Solution:
+    def getMaxFunctionValue(self, receiver: List[int], k: int) -> int:
+        n, m = len(receiver), k.bit_length()
+        f = [[0] * m for _ in range(n)]
+        g = [[0] * m for _ in range(n)]
+        for i, x in enumerate(receiver):
+            f[i][0] = x
+            g[i][0] = i
+        for j in range(1, m):
+            for i in range(n):
+                f[i][j] = f[f[i][j - 1]][j - 1]
+                g[i][j] = g[i][j - 1] + g[f[i][j - 1]][j - 1]
+        ans = 0
+        for i in range(n):
+            p, t = i, 0
+            for j in range(m):
+                if k >> j & 1:
+                    t += g[p][j]
+                    p = f[p][j]
+            ans = max(ans, t + p)
+        return ans"
+782,other,False,"from archetypal import float_round , ReportData , log , timeit , timeit2","from archetypal import float_round , ReportData , log , timeit , settings"
+783,other,False,"ADMINS = [ ( """"""Ben Elliot"""""" , 'benjiboi214@gmail.com' ) , ( ""Ben Elliot"" , 'benjiboi214@gmail.com' ) ]","ADMINS = [ ( 'Ben Elliot' , 'benjiboi214@gmail.com' ) , ]"
+784,other,False,"bmrb . software ( name = 'X' , url = 'http://nmr-relax.com' , vendor_name = 'me' , cite = [ cite_id ] , tasks = [ 'procrastinating' , 'nothing much' , 'wasting time' ] , tags = [ 'procrastinating' , 'nothing much' , 'wasting time' ] )","bmrb . software ( name = 'X' , url = 'http://nmr-relax.com' , vendor_name = 'me' , cite_ids = [ cite_id ] , tasks = [ 'procrastinating' , 'nothing much' , 'wasting time' ] )"
+785,other,False,"values = np . array ( [ np . sum ( inits [ RED ] [ np . unique ( arcs [ ARC_RED_BLUE ] ) ] ) ] , dtype = np . float64 )","values = np . array ( [ np . sum ( inits [ RED ] [ np . unique ( arcs [ ARC_RED_BLUE ] [ : , 0 ] ) ] ) ] )"
+786,other,False,result = [ module . details for module in self . modules ] if self . modules else [ ],"result = [ module . details for slug , module in self . modules . items ( ) ]"
+787,other,False,"response . write ( templater . render ( ""templates/index.html"" , page_title = ""Welcome to M'lists"" , site_title = ""M'lists"" , response = response , request = request ) )","response . write ( templater . render ( ""templates/index.html"" , page_title = ""Welcome to M'lists"" , site_title = ""M'lists"" , response = response , signup_failed = False ) )"
+788,unknown,False,"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    ax.axis('equal')
+
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(data):
+
+
+    
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    job_count = data['Job'].value_counts()
+    
+    labels = job_count.index.tolist()
+    sizes = job_count.values.tolist()
+    colors = [plt.cm.Spectral(i/float(len(labels))) for i in range(len(labels))]
+        
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    ax.axis('equal')
+
+    return fig"
+789,other,False,"lgr . info ( ""Installing %s%s recursively"" , ds , ( "" underneath %s"" % target_path if ds . path != target_path else """" ) )","lgr . info ( ""Installing %s%s recursively"" , ds , ( "" to get %s"" % target_path if ds . path != target_path else """" ) )"
+790,other,False,if change [ 'type' ] == 'update' and change [ 'value' ] != '' : self . protocol . transport = self,if ( change [ 'type' ] == 'update' or change [ 'type' ] == 'create' ) and change [ 'value' ] : self . protocol . transport = self
+791,other,False,module . icon = d [ 'icon' ] if 'icon' in d else None,"module . icon = d [ 'icon' ] if 'icon' in d else ""settings"""
+792,other,True,"class Solution:
+    def findValueOfPartition(self, nums: List[int]) -> int:
+           
+        nums.sort()
+        min_diff = float('inf')
+        
+        for i in range(1,len(nums)):
+            min_diff = min(min_diff, abs(nums[i] - nums[i-1]))
+            
+        return min_diff","class Solution:
+    def findValueOfPartition(self, nums: List[int]) -> int:
+           
+        nums.sort()
+        min_diff = float('inf')
+        
+        for i in range(1,len(nums)):
+            min_diff = min(min_diff, abs(nums[i] - nums[i-1]))
+            
+        return min_diff"
+793,other,False,"self . hocr_surrogate_filepath = os . path . join ( self . tmp_root , self . tree_target_dir , self . file_stem + '.tif' )","self . hocr_surrogate_filepath = os . path . join ( self . tmp_root , self . tree_target_dir , self . file_stem + '.tiff' )"
+794,other,False,"message = ""\x0f[%s] %s"" % ( self . _format ( postdata [ 'repository' ] [ 'name' ] , ""repo"" ) , self . _format ( commit [ 'author' ] [ 'name' ] . encode ( 'ascii' , 'ignore' ) , ""author"" ) ,","message = ""\x0f[%s] %s"" % ( self . _format ( postdata [ 'repository' ] [ 'name' ] , ""repo"" ) , self . _format ( postdata [ 'author' ] [ 'name' ] . encode ( 'ascii' , 'ignore' ) , ""author"" ) )"
+795,unknown,False,"class Solution:
+    def maxSum(self, nums: List[int], m: int, k: int) -> int:
+        cnt = Counter(nums[:k])
+        s = sum(nums[:k])
+        ans = s if len(cnt) >= m else 0
+        for i in range(k, len(nums)):
+            cnt[nums[i]] += 1
+            cnt[nums[i - k]] -= 1
+            s += nums[i] - nums[i - k]
+            if cnt[nums[i - k]] == 0:
+                cnt.pop(nums[i - k])
+            ans = max(ans, s)
+        return ans","class Solution:
+    def maxSum(self, nums: List[int], m: int, k: int) -> int:
+        cnt = Counter(nums[:k])
+        s = sum(nums[:k])
+        ans = s if len(cnt) >= m else 0
+        for i in range(k, len(nums)):
+            cnt[nums[i]] += 1
+            cnt[nums[i - k]] -= 1
+            s += nums[i] - nums[i - k]
+            if cnt[nums[i - k]] == 0:
+                cnt.pop(nums[i - k])
+            if len(cnt) >= m:
+                ans = max(ans, s)
+        return ans"
+796,other,False,"class_name = re . search ( r'\n\.SH NAME\n(.+?) ' , data ) . group ( 1 ) . strip ( )","class_name = re . search ( r'\n\.SH NAME\n(?:.*::)?(.+?) ' , data ) . group ( 1 )"
+797,other,False,"song , _ = NeteaseSongSchema ( strict = True ) . load ( data , many = True )","song , _ = NeteaseSongSchema ( strict = True ) . load ( song_data )"
+798,other,False,"raise TypeError ( ""MaxAndArgmax need a constant axis"" )","raise TypeError ( ""MaxAndArgmax needs a constant axis"" )"
+799,other,False,"backup_start_offset = backup_info ( 'wal_segment_offset_backup_start' , 'wal_segment' )",backup_start_offset = backup_info [ 'wal_segment_offset_backup_start' ]
