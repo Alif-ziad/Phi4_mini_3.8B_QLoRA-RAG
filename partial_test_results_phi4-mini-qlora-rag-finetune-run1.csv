@@ -4159,3 +4159,470 @@ def task_func(data, column, outlier_z_score):
         return res % (10**9 + 7)"
 348,other,False,"return self . FileFactory . from_new ( data , file_obj = file_obj , src_path = path , owner = owner , mode = mode )","return self . FileFactory . from_new ( data , file_obj = file_obj , src_path = src_path , owner = owner )"
 349,other,False,"info = os . popen ( '(' + preferences . blenderVersion . getDefaultPath ( ) + ' -b ""' + path + '"" -P ""' + os . path . realpath ( __file__ + '/..' ) + '/getter/getFileTaskInfos.py""') . read ( )","info = os . popen ( '(' + preferences . blender . path + ' -b ""' + path + '"" -P ""' + os . path . realpath ( __file__ + '/..' ) + '/getter/getFileTaskInfos.py"") || echo \'BlenderVersionError\' ' ) . read ( )"
+350,algorithm,False,"parser . add_argument ( '--max' , type = int , default = 100000 , help = 'How many sentences to read from stdin? default: %(default)d' )","parser . add_argument ( '--max' , type = int , default = 0 , help = 'How many sentences to read from stdin? 0 for all. default: %(default)d' )"
+351,assignment,False,game . scores [ i ] = scores [ game . users [ i ] ] + bonuses [ game . users [ i ] ] if i < len ( scores ) else 0,game . scores [ i ] += scores [ game . users [ i ] ] + bonuses [ game . users [ i ] ]
+352,other,False,"await ctx . send ( '```py\n{account}\nTook {delta}ms.```' . format ( account = account , delta = delta ) )",await ctx . send ( f'```py\n{account}\nTook {delta}ms.```' )
+353,other,False,"id = models . ForeignKey ( Resultado , primary_key = True , db_column = 'sancion_definitiva_id' , unique = False )","id = models . ForeignKey ( Resultado , primary_key = True , db_column = 'sancion_id' , unique = True )"
+354,other,False,"url = 'https://github.com/ant31/cn-app-registry/cn-server' ,","url = 'https://github.com/cn-app-registry/cnr-server' ,"
+355,other,False,"""""""EdLogViewer can be saved in the shelf preference stack""""""","""""""EdFindResults can be saved in the shelf preference stack"""""""
+356,other,False,tel_description . optics . num_mirror_tiles = ( cam_settings [ 'mirror_area' ] ) / 2,tel_description . optics . num_mirror_tiles = ( cam_settings [ 'n_mirrors' ] )
+357,other,False,"treetoolbar . addActions ( self . guiActions . treeActions . guiActions ( ) , self . guiActions . treeActions . guiActions ( ) )",treetoolbar . addActions ( self . guiActions . treeActions . actions ( ) )
+358,other,False,"from django . signals import calculate_gla , tubule_means , tubule_mean","from gonad . signals import calculate_gla , tubule_means"
+359,other,False,"return filter ( lambda m : m [ ""id"" ] in ReadonlySystemFlds , self . configuration . meta [ ""fields"" ] )","return filter ( lambda m : m [ ""id"" ] not in ReadonlySystemFlds , self . configuration . meta )"
+360,other,False,self . latticeConstant = [ g [ 1 ] - g [ 0 ] for g in self . marginalGrid ] + [ 0 ],self . latticeConstant = [ np . abs ( g [ 0 ] - g [ 1 ] ) for g in self . marginalGrid ]
+361,other,False,"if item_meta and ""type"" in item_meta : child . attrs [ ""contentType"" ] = item_meta [ ""type"" ]","if ""type"" in item_meta : child . attrs [ ""contentType"" ] = item_meta [ ""type"" ]"
+362,other,False,"( 'country' , models . ForeignKey ( related_name = 'chambers' , blank = True , null = True , to = 'representatives.Country' ) ) ,","( 'country' , models . ForeignKey ( related_name = 'chambers' , to = 'representatives.Country' , null = True ) ) ,"
+363,unknown,False,"import re
+import smtplib
+# Constants
+TEXT = ""Josie Smith [3996 COLLEGE AVENUE, SOMETOWN, MD 21003]Mugsy Dog Smith [2560 OAK ST, GLENMEADE, WI 14098]""
+RECEPIENT_ADDRESS = ""names@gmail.com""
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(text=TEXT, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, recepient_address=RECEPIENT_ADDRESS, smtp=None):
+
+
+    text = re.sub(r'\[.*?\]', '', text)
+    names = re.findall('(.*?)(?:\\[.*?\\]|$)', text)
+    # Remove trailing spaces from each name and filter out empty strings
+    names = [name.strip() for name in names if name != """"]
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    if not smtp:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    else:
+        server = smtplib","import re
+import smtplib
+# Constants
+TEXT = ""Josie Smith [3996 COLLEGE AVENUE, SOMETOWN, MD 21003]Mugsy Dog Smith [2560 OAK ST, GLENMEADE, WI 14098]""
+RECEPIENT_ADDRESS = ""names@gmail.com""
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(text=TEXT, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, recepient_address=RECEPIENT_ADDRESS, smtp=None):
+
+
+    names = re.findall('(.*?)(?:\\[.*?\\]|$)', text)
+    # Remove trailing spaces from each name and filter out empty strings
+    names = [name.strip() for name in names if name != """"]
+    
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recepient_address, message)
+    server.quit()
+    return names"
+364,other,False,"client_socket . send ( ""$22$ *bitmask da configurare non valido*"" )","client_socket . send ( ""$22$ *bitmask %s non valida per GPIO %d*"" % ( command [ 2 ] , gpiost [ 0 ] ) )"
+365,type,False,"self . assertEquals ( int ( sysmodel . mtime ) , os . stat ( modelPath ) . st_mtime )","self . assertEquals ( sysmodel . mtime , int ( os . stat ( modelPath ) . st_mtime ) )"
+366,unknown,True,"import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax","import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+def task_func(data):
+
+    df = pd.DataFrame(data, columns=COLUMN_NAMES)
+    df['Average'] = df.mean(axis=1)
+
+    # Creating a new figure and axis for plotting
+    fig, ax = plt.subplots()
+    df['Average'].plot(ax=ax)
+    ax.set_ylabel('Average')  # Setting the Y-axis label to 'Average'
+
+    return df, ax"
+367,unknown,True,"class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans","class Solution:
+    def validSubstringCount(self, word1: str, word2: str) -> int:
+        if len(word1) < len(word2):
+            return 0
+        cnt = Counter(word2)
+        need = len(cnt)
+        ans = l = 0
+        win = Counter()
+        for c in word1:
+            win[c] += 1
+            if win[c] == cnt[c]:
+                need -= 1
+            while need == 0:
+                if win[word1[l]] == cnt[word1[l]]:
+                    need += 1
+                win[word1[l]] -= 1
+                l += 1
+            ans += l
+        return ans"
+368,unknown,True,"import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps"
+369,other,False,"copyright = u'Copyright (C) 2008, 2009 Michael Trier and contributors, 2010 Sebastian Thiel'","copyright = u'Copyright (C) 2008, 2009 Michael Trier and contributors, 2010-2015 Sebastian Thiel'"
+370,assignment,False,"complete_models . append ( api . check_resource ( models_split [ index ] , api . get_model ) if models_split [ index ] else None )","complete_models . append ( api . check_resource ( models_split [ index ] , api . get_model , 'limit=-1' ) )"
+371,other,False,"log . info ( ""Restored Cloudman from cluster_bucket %s"" % ( ud [ 'cluster_bucket' ] ) , ud )","log . info ( ""Restored Cloudman from bucket_cluster %s"" % ( ud [ 'bucket_cluster' ] ) )"
+372,algorithm,True,"class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        ans = mx = mx_diff = 0
+        for x in nums:
+            ans = max(ans, mx_diff * x)
+            mx_diff = max(mx_diff, mx - x)
+            mx = max(mx, x)
+        return ans","class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        ans = mx = mx_diff = 0
+        for x in nums:
+            ans = max(ans, mx_diff * x)
+            mx_diff = max(mx_diff, mx - x)
+            mx = max(mx, x)
+        return ans"
+373,other,True,"event . msg . reply ( 'I found too many users ({}) for your query: `{}`' . format ( len ( users ) , query ) )","event . msg . reply ( 'I found too many users ({}) for your query: `{}`' . format ( len ( users ) , query ) )"
+374,other,False,"messages . success ( request , "" Contact message has benn recieved succesfully. Capsulefy team will contact you as soon as possible."" )","messages . success ( request , "" Contact message has been recieved succesfully. Capsulefy team will contact you has soon as possible."" )"
+375,other,False,cmd = 'python ' + REPO_PATH + '/testcases/VIM/OpenStack/CI/libraries/clean_openstack.py',cmd = 'python ' + REPO_PATH + '/testcases/VIM/OpenStack/CI/libraries/clean_openstack.py --debug'
+376,other,False,"sorted_bonds = np . asarray ( [ [ b0 . index , b1 . index ] for b0 , b1 in sorted_bonds ] , dtype = int )","sorted_bonds = np . asarray ( [ [ b0 . index , b1 . index ] for b0 , b1 in sorted_bonds ] , dtype = np . int32 )"
+377,unknown,True,"class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans","class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans"
+378,other,False,"user = req . connection . notes . get ( 'BASIC_AUTHORIZED' , 'false' )","user = req . connection . notes . get ( 'BASIC_AUTHORIZED' , None )"
+379,other,False,"entry_points = { 'console_scripts' : [ 'txnvalidator = txnmain.validator_cli:main' , 'txnadmin = txnmain.admin_cli:main' ] }","entry_points = { 'console_scripts' : [ 'txnvalidator = txnserver.validator_cli:main_wrapper' , 'txnadmin = txnmain.admin_cli:main' ] }"
+380,unknown,False,"import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+
+    if not smtp:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    names.clear()
+    return names","import json
+import smtplib
+# Constants
+SMTP_SERVER = ""smtp.gmail.com""
+SMTP_PORT = 587
+EMAIL_ADDRESS = ""your.email@gmail.com""
+EMAIL_PASSWORD = ""your.password""
+def task_func(input_data=None, smtp_server=SMTP_SERVER, smtp_port=SMTP_PORT, email_address=EMAIL_ADDRESS, email_password=EMAIL_PASSWORD, smtp=None):
+
+     
+    if input_data is None:
+        return []
+
+    # Parse input JSON data
+    try:
+        data = json.loads(input_data)
+        recipient_email = data.get('recipient')
+        names = data.get('names', [])
+    except (json.JSONDecodeError, ValueError):
+        return []
+
+    if not recipient_email or not names:
+        return []
+
+    message = 'Subject: Extracted Names\n\n' + '\n'.join(names)
+    
+    if smtp:
+        server = smtp(smtp_server, smtp_port)
+    else:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(email_address, email_password)
+    server.sendmail(email_address, recipient_email, message)
+    server.quit()
+    return names"
+381,timing_serialization,True,"import pandas as pd
+import json
+import numpy as np
+# Constants
+COLUMNS = ['email', 'list']
+def task_func(json_file):
+
+    with open(json_file, 'r') as file:
+        email_data = json.load(file)
+    if not email_data :
+        return pd.DataFrame([], columns = COLUMNS + [""sum"", ""mean""]), None
+
+    df = pd.DataFrame(email_data, columns=COLUMNS)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+
+    ax = df[['sum', 'mean']].plot(kind='bar')
+
+    return df, ax","import pandas as pd
+import json
+import numpy as np
+# Constants
+COLUMNS = ['email', 'list']
+def task_func(json_file):
+
+    with open(json_file, 'r') as file:
+        email_data = json.load(file)
+    if not email_data :
+        return pd.DataFrame([], columns = COLUMNS + [""sum"", ""mean""]), None
+
+    df = pd.DataFrame(email_data, columns=COLUMNS)
+    df['sum'] = df['list'].apply(np.sum)
+    df['mean'] = df['list'].apply(np.mean)
+
+    ax = df[['sum', 'mean']].plot(kind='bar')
+
+    return df, ax"
+382,other,False,"checkpoint_path = train_tuple . model . saver . save ( train_tuple . session , ckptsdir + ""model.ckpt"" , global_step = global_step , write_meta_data = True )","checkpoint_path = train_tuple . model . saver . save ( train_tuple . session , ckptsdir + ""/model.ckpt"" , global_step = global_step )"
+383,other,False,"self . engine . prompt_user ( ""Visit the %s and create a twitter application with read and write permission"" % ( redirect_url ) , None , ""http://twitter.com"" )","self . engine . prompt_user ( ""Visit the %s and create a twitter application with read and write permission"" % ( self . redirect_url ) , None )"
+384,unknown,True,"class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        max_p = lcm(*nums) * max(nums)
+        for i in range(n):
+            p, g, l = 1, 0, 1
+            for j in range(i, n):
+                p *= nums[j]
+                g = gcd(g, nums[j])
+                l = lcm(l, nums[j])
+                if p == g * l:
+                    ans = max(ans, j - i + 1)
+                if p > max_p:
+                    break
+        return ans","class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        max_p = lcm(*nums) * max(nums)
+        for i in range(n):
+            p, g, l = 1, 0, 1
+            for j in range(i, n):
+                p *= nums[j]
+                g = gcd(g, nums[j])
+                l = lcm(l, nums[j])
+                if p == g * l:
+                    ans = max(ans, j - i + 1)
+                if p > max_p:
+                    break
+        return ans"
+385,other,False,instance . last_updated = datetime . date . now ( pytz . utc ) . astimezone ( ),instance . last_updated = datetime . date . today ( )
+386,other,False,"if x != windowWidth / 2 or y != windowHeight / 2 or hold_mouse : glut . glutWarpPointer ( windowWidth / 2 , windowHeight / 2 )","if ( x != windowWidth / 2 or y != windowHeight / 2 ) and hold_mouse : glut . glutWarpPointer ( windowWidth / 2 , windowHeight / 2 )"
+387,other,False,"return dict ( voteinfo = uvotes , candidates = candidates , election = election , voter = kw [ 'name' ] if 'name' in kw else None )","return dict ( voteinfo = uvotes , candidates = candidates , election = election )"
+388,unknown,True,"class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return inf
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(0, 0)","class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        @cache
+        def dfs(i: int, j: int) -> int:
+            if n - i <= j:
+                return 0
+            if i >= n:
+                return inf
+            return min(dfs(i + 1, j + time[i]) + cost[i], dfs(i + 1, j - 1))
+
+        n = len(cost)
+        return dfs(0, 0)"
+389,logic,True,"if rank < cur_rank : raise GameException ( ConfigErrorMessage . get_error_id ( ""ARENA_CURRENT_RANK_CHECK_FAILURE"" ) )","if rank < cur_rank : raise GameException ( ConfigErrorMessage . get_error_id ( ""ARENA_CURRENT_RANK_CHECK_FAILURE"" ) )"
+390,algorithm,True,"from datetime import datetime
+import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(timestamps):
+
+    if not timestamps:
+        raise ValueError(""Input list of timestamps is empty."")
+    datetimes = [datetime.fromtimestamp(t).strftime(DATE_FORMAT) for t in timestamps]
+    df = pd.DataFrame({""Timestamp"": timestamps, ""Datetime"": datetimes})
+    ax = plt.hist(pd.to_datetime(df[""Datetime""]))
+    plt.close()
+    return df, ax","from datetime import datetime
+import pandas as pd
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(timestamps):
+
+    if not timestamps:
+        raise ValueError(""Input list of timestamps is empty."")
+    datetimes = [datetime.fromtimestamp(t).strftime(DATE_FORMAT) for t in timestamps]
+    df = pd.DataFrame({""Timestamp"": timestamps, ""Datetime"": datetimes})
+    ax = plt.hist(pd.to_datetime(df[""Datetime""]))
+    plt.close()
+    return df, ax"
+391,other,False,"sub_parser . add_argument ( '--model' , type = str , default = 'default' )","sub_parser . add_argument ( '--input-model' , type = str )"
+392,algorithm,True,"class Solution:
+    def valueAfterKSeconds(self, n: int, k: int) -> int:
+        a = [1] * n
+        mod = 10**9 + 7
+        for _ in range(k):
+            for i in range(1, n):
+                a[i] = (a[i] + a[i - 1]) % mod
+        return a[n - 1]","class Solution:
+    def valueAfterKSeconds(self, n: int, k: int) -> int:
+        a = [1] * n
+        mod = 10**9 + 7
+        for _ in range(k):
+            for i in range(1, n):
+                a[i] = (a[i] + a[i - 1]) % mod
+        return a[n - 1]"
+393,algorithm,False,"sniff ( prn = lambda x : monitor_callback ( x ) , filter = ""port 3080 and host 127.0.0.1"" , iface = ""lo"" , store = 0 , timeout = 0 )","sniff ( prn = lambda x : monitor_callback ( x ) , filter = ""port 3080 and host 127.0.0.1"" , iface = ""any"" , store = 0 )"
+394,other,False,"self . outf . write ( 'Skipping unknown block (""%s"")...\n' % blockname . decode ( 'utf-8' ) )",self . outf . write ( 'Skipping unknown block (%s)...\n' % blockname )
+395,other,False,"class Solution:
+    def secondGreaterElement(self, nums: List[int]) -> List[int]:
+        ans = [-1] * len(nums)
+        s, ss = [], []
+        for i, x in enumerate(nums): 
+            while ss and nums[ss[-1]] < x: ans[ss.pop()] = x
+            buff = []
+            while s and nums[s[-1]] < x: buff.append(s.pop())
+            while buff: s.append(buff.pop())
+            ss.append(i)
+        return ans","class Solution:
+    def secondGreaterElement(self, nums: List[int]) -> List[int]:
+        ans = [-1] * len(nums)
+        s, ss = [], []
+        for i, x in enumerate(nums): 
+            while ss and nums[ss[-1]] < x: ans[ss.pop()] = x
+            buff = []
+            while s and nums[s[-1]] < x: buff.append(s.pop())
+            while buff: ss.append(buff.pop())
+            s.append(i)
+        return ans"
+396,other,True,"ax . axhline ( - j , lw = 5 , color = 'k' , zorder = j )","ax . axhline ( - j , lw = 5 , color = 'k' , zorder = j )"
+397,other,False,state_ids = [ e . event_id for e in event . state_events . all ( ) ],state_ids = [ e . event_id for e in context . current_state . values ( ) ]
+398,other,False,"init_text = '''from flask import Flask
+ app = Flask(__name__)
+ 
+ import {app_name}.views as views'''","init_text = '''from flask import Flask
+ app = Flask(__name__)
+ 
+ import ${app_name}.views'''"
+399,other,False,"trans_date = datetime . datetime . strptime ( date , '%Y-%m-%d' ) . strftime ( '%d/%m/%Y' ) . replace ( '-' , '/' )","trans_date = datetime . datetime . strptime ( date , '%Y-%m-%d' )"
