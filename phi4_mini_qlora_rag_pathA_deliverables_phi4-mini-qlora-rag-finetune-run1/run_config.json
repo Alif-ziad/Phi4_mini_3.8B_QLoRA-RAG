@@ -42,7 +42,7 @@
   "rougeL": 0.8812303768435943,
   "sacrebleu": 86.03222251307942,
   "prior_results_compared_against": {
-    "QLoRA-only ": {
+    "QLoRA-only": {
       "exact_match": 0.2394,
       "rougeL": 0.8809,
       "sacrebleu": 87.45
