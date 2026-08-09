@@ -17924,3 +17924,457 @@ def task_func(config_file_path, archieve_dir ='/home/user/archive'):
 
     return True"
 1499,other,False,"self . sync_view ( lang , view , name , pk = trek . pk , force = True )","self . sync_view ( lang , view , name , url = '/?format=geojson' , pk = trek . pk )"
+1500,unknown,False,"import re
+import matplotlib.pyplot as plt
+from nltk.probability import FreqDist
+def task_func(example_str, top_n=30):
+
+    text = ' '.join(re.findall('(.*?)\\[.*?\\]', example_str))
+    words = text.split()
+    fdist = FreqDist(words)
+
+    if top_n > len(fdist):
+        top_n = len(fdist)
+    # Initialize a fresh plot for the frequency distribution but do not show it
+    plt.figure()
+    ax = fdist.plot(top_n, cumulative=False, show=False)
+    plt.clf()
+
+    top_n_words = dict(fdist.most_common(top_n))
+    return ax, top_n_words","import re
+import matplotlib.pyplot as plt
+from nltk.probability import FreqDist
+def task_func(example_str, top_n=30):
+
+    text = ' '.join(re.findall('(.*?)\\[.*?\\]', example_str))
+    words = text.split()
+    fdist = FreqDist(words)
+
+    if top_n > len(fdist):
+        top_n = len(fdist)
+    # Initialize a fresh plot for the frequency distribution but do not show it
+    plt.figure()
+    ax = fdist.plot(top_n, cumulative=False, show=False)
+    plt.close()
+
+    top_n_words = dict(fdist.most_common(top_n))
+    return ax, top_n_words"
+1501,other,False,"matches . append ( os . path . join ( root , file . decode ( 'utf-8' , 'ignore' ) ) )","matches . append ( os . path . join ( root . decode ( 'utf-8' ) , file . decode ( 'utf-8' ) ) )"
+1502,unknown,False,"class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            self.num = mid
+            v = dfs(mid.bit_length(), True, 0)
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l","class Solution:
+    def findMaximumNumber(self, k: int, x: int) -> int:
+        @cache
+        def dfs(pos, limit, cnt):
+            if pos == 0:
+                return cnt
+            ans = 0
+            up = (self.num >> (pos - 1) & 1) if limit else 1
+            for i in range(up + 1):
+                ans += dfs(pos - 1, limit and i == up, cnt + (i == 1 and pos % x == 0))
+            return ans
+
+        l, r = 1, 10**18
+        while l < r:
+            mid = (l + r + 1) >> 1
+            self.num = mid
+            v = dfs(mid.bit_length(), True, 0)
+            dfs.cache_clear()
+            if v <= k:
+                l = mid
+            else:
+                r = mid - 1
+        return l"
+1503,unknown,True,"import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df, letters=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')):
+
+    if not isinstance(df, pd.DataFrame) or 'Letters' not in df.columns:
+        raise ValueError(""The input must be a pandas DataFrame with a 'Letters' column."")
+
+    letter_frequency = df['Letters'].value_counts().reindex(letters, fill_value=0)
+    ax = letter_frequency.plot(kind='bar')
+    ax.set_title('Letter Frequency')
+    ax.set_xlabel('Letters')
+    ax.set_ylabel('Frequency')
+    plt.show()
+    return ax","import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df, letters=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')):
+
+    if not isinstance(df, pd.DataFrame) or 'Letters' not in df.columns:
+        raise ValueError(""The input must be a pandas DataFrame with a 'Letters' column."")
+
+    letter_frequency = df['Letters'].value_counts().reindex(letters, fill_value=0)
+    ax = letter_frequency.plot(kind='bar')
+    ax.set_title('Letter Frequency')
+    ax.set_xlabel('Letters')
+    ax.set_ylabel('Frequency')
+    plt.show()
+    return ax"
+1504,other,False,"raise IOError ( ( ""MoviePy error: the file %s could not be found !\n"" ""Please check that you entered the correct "" ""path."" ) % filename . strip ( ) )","raise IOError ( ( ""MoviePy error: the file %s could not be found!\n"" ""Please check that you entered the correct "" ""path."" ) % filename )"
+1505,type,False,"phone , group , name , language , gender , age , occupation , district , village_name , subcounty , health_facility = row [ : 11 ] [ : 11 ]","phone , group , name , language , gender , age , occupation , district , village_name , subcounty , health_facility = tuple ( row [ : 11 ] )"
+1506,other,True,"def get_study_uuid_from_id ( self , study_id ) : raise NotImplementedError","def get_study_uuid_from_id ( self , study_id ) : raise NotImplementedError"
+1507,other,False,"rscript = deseq2 . write_deseq ( args [ ""input"" ] , conditions , comps [ 0 ] , comps [ 1 ] , args [ ""padj"" ] , args [ ""outdir"" ] )","rscript = deseq2 . write_deseq ( conditions , comps [ 0 ] , comps [ 1 ] , args [ ""padj"" ] )"
+1508,other,False,"self . send ( self . build_identifier ( '\#ops/casper' ) , ""User: "" + name + "" logged into VPN"" )","self . send ( self . build_identifier ( '#ops/casper' ) , ""User: "" + name + "" logged into VPN"" )"
+1509,other,False,"offset = EEGsynth . getfloat ( 'input' , 'offset' , config , r , default = 0.0 )","offset = EEGsynth . getfloat ( 'input' , 'offset' , config , r , default = 64 )"
+1510,other,False,reaction_info [ reaction_id ] [ 'reversible' ] = eval ( reaction . attrib [ 'reversible' ] . title ( ) ) == 'True',"reaction_info [ reaction_id ] [ 'reversible' ] = eval ( reaction . attrib . get ( 'reversible' , 'False' ) . title ( ) )"
+1511,type,False,"config . set_counter ( _APP , _U2F_COUNTER , int ( counter ) , True )","config . set_counter ( _APP , _U2F_COUNTER , int . from_bytes ( counter , ""big"" ) , True )"
+1512,checking,False,"flickr = FlickrJSON ( settings . DUCTUS_FLICKR_API_KEY , debug = False )","flickr = FlickrJSON ( getattr ( settings , ""DUCTUS_FLICKR_API_KEY"" , """" ) )"
+1513,other,True,"scripts = [ 'bin/czi_to_tiff' , 'bin/nd2_to_tiff' , 'bin/gpseq_anim' , 'bin/gpseq_fromfish' , 'bin/gpseq_fromfish_merge' , 'bin/tiff_auto3dseg' , 'bin/tiff_findoof' , 'bin/tiff_split' , 'bin/tiffcu' ] ,","scripts = [ 'bin/czi_to_tiff' , 'bin/nd2_to_tiff' , 'bin/gpseq_anim' , 'bin/gpseq_fromfish' , 'bin/gpseq_fromfish_merge' , 'bin/tiff_auto3dseg' , 'bin/tiff_findoof' , 'bin/tiff_split' , 'bin/tiffcu' ] ,"
+1514,other,False,"Things . get ( thing [ 'type' ] ) . newThing ( message [ 'rpi_id' ] , thing [ 'id' ] , message [ 'name' ] )","Things . get ( thing [ 'type' ] ) . new_thing ( message [ 'rpi_id' ] , thing [ 'id' ] )"
+1515,other,False,"p . add_argument ( 'password' , nargs = '?' , default = '' , help = 'password' )","p . add_argument ( 'password' , nargs = '?' , default = 'openquake' )"
+1516,other,False,if ( abs ( ft [ ii ] ) <= minconce ) and ( ii != 0 ) : ft [ ii ] = 0.0,if ( ( ft [ ii ] ) <= minconce ) : ft [ ii ] = 0.0
+1517,other,False,"install_requires = [ 'django < 1.6' , 'south<0.8.0' , 'requests' , 'django-registration' , 'django-debug-toolbar<1.0.0' , 'django-extensions' ] ,","install_requires = [ 'django < 1.6' , 'south<0.8.0' , 'requests' , 'django-registration==0.8.0' , 'django-debug-toolbar<1.0.0' ] ,"
+1518,other,False,"required_config . add_option ( 'prefix' , doc = ""a prefix to use inside the bucket"" , default = 'dev' , reference_value_from = 'resource.boto' , )","required_config . add_option ( 'prefix' , doc = ""a prefix to use inside the bucket"" , default = '' , reference_value_from = 'resource.boto' , likely_to_be_changed = True , )"
+1519,unknown,False,"import pandas as pd
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    df = df.drop_duplicates(subset='Name')
+
+    slope, intercept, r_value, _, _ = stats.linregress(df['Age'], df['Score'])
+
+    df['Age_up'] = intercept + slope * df['Age']
+    fig = plt.figure(figsize=(8, 6))
+    ax = fig.add_subplot(111)
+    plt.scatter(df['Age'], df['Score'], label='Data')
+    plt.plot(df['Age'].values, df['Age_up'].values, 'r', label='Fitted line')
+    plt.xlabel('Age')
+    plt.ylabel('Score')
+    plt.title('Linear Regression')
+    plt.legend()
+    return plt.gcf(), ax","import pandas as pd
+from scipy import stats
+import matplotlib.pyplot as plt
+def task_func(df):
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""The input df is not a DataFrame"")
+    
+    df = df.drop_duplicates(subset='Name')
+
+    slope, intercept, r_value, _, _ = stats.linregress(df['Age'], df['Score'])
+
+    df['Age_up'] = intercept + slope * df['Age']
+    fig = plt.figure(figsize=(8, 6))
+    ax = fig.add_subplot(111)
+    plt.scatter(df['Age'], df['Score'], label='Data')
+    plt.plot(df['Age'].values, df['Age_up'].values, 'r', label='Fitted line')
+    plt.xlabel('Age')
+    plt.ylabel('Score')
+    plt.title('Linear Regression')
+    plt.legend()
+    return plt, ax"
+1520,other,False,"self . val_intthr = wx . TextCtrl ( self , wx . TE_PROCESS_ENTER , style = wx . TE_PROCESS_ENTER )","self . val_intthr = wx . TextCtrl ( self , style = wx . TE_PROCESS_ENTER )"
+1521,other,False,"class remarks ( nodes . Admonition , nodes . Element ) : """"""
+     New node for remarks messages.
+     """"""","class remarks ( nodes . paragraph , nodes . Element ) : """"""
+     New node for remarks messages.
+     """""""
+1522,unknown,False,"import numpy as np
+from scipy import fftpack
+import matplotlib.pyplot as plt
+def task_func(data, sample_rate=8000):
+
+    # Add new key 'a' with value 1
+    data['a'] = 1
+
+    # Generate a signal based on the values in `data`
+    signal = np.array(list(data.values()))
+    time = np.linspace(0, 2, 2 * sample_rate, False)
+    signal = np.sin(np.outer(time, signal) * np.pi)
+
+    # Perform a Fast Fourier Transform (FFT) on the signal
+    fft = fftpack.fft(signal)
+
+    # Plot the FFT
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(np.abs(fft))
+    ax.set_title('FFT of the Signal')
+    ax.set_xlabel('Frequency [Hz]')
+    ax.set_ylabel('Frequency Spectrum Magnitude')
+
+    return fft, ax","import numpy as np
+from scipy import fftpack
+import matplotlib.pyplot as plt
+def task_func(data, sample_rate=8000):
+
+    # Add new key 'a' with value 1
+    data['a'] = 1
+
+    # Generate a signal based on the values in `data`
+    signal = np.array(list(data.values()))
+    time = np.linspace(0, 2, 2 * sample_rate, False)
+    signal = np.sin(np.outer(time, signal) * np.pi)
+
+    # Perform a Fast Fourier Transform (FFT) on the signal
+    fft = fftpack.fft(signal)
+
+    # Plot the FFT
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(np.abs(fft))
+    ax.set_title('FFT of the Signal')
+    ax.set_xlabel('Frequency [Hz]')
+    ax.set_ylabel('Frequency Spectrum Magnitude')
+    
+    return fft, ax"
+1523,other,False,"with open ( '%s%s' % ( filepath , filename ) ) as fileobj : file_almanac = pickle . load ( self , fileobj )","with open ( '%s%s' % ( filepath , self . generate_file_name ( ) , ) ) as fileobj : file_almanac = pickle . load ( self , fileobj )"
+1524,type,False,"functional_groups . append ( [ int ( position ) , str ( gn ) ] )",functional_groups . append ( TaskKeys . literal_to_formula_group_name [ gn ] )
+1525,other,False,"from tensorflow . contrib . keras . api . keras . utils import get_file , get_file",from tensorflow . python . keras . utils import get_file
+1526,other,False,"return { 'RAVEN_DSN' : ""https://{}@app.getsentry.com/{}"" . format ( public_key , project_id ) . encode ( 'utf-8' ) }","return { 'RAVEN_DSN' : ""https://{0}@app.getsentry.com/{1}"" . format ( public_key , project_id ) }"
+1527,other,False,"code_set_out_shape += """"""
+       if(c->Rank(c->input(%(idx)i)) != %(rank)i)
+         return errors::InvalidArgument(
+           ""wrong rank for input (%(idx)i) '%(name)s'. required %(rank)i but got "", c->Rank(c->input(%(idx)i)), c->input(%(idx)i)->name());
+       """""" % { ""idx"" : i , ""rank"" : v [ ""ndim"" ] , ""name"" : v [ ""name"" ] }","code_set_out_shape += """"""
+       if(c->Rank(c->input(%(idx)i)) != tensorflow::shape_inference::InferenceContext::kUnknownRank && c->Rank(c->input(%(idx)i)) != %(rank)i)
+         return errors::InvalidArgument(
+           ""wrong rank for input (%(idx)i) '%(name)s'. required %(rank)i but got "", c->Rank(c->input(%(idx)i)));
+       """""" % { ""idx"" : i , ""rank"" : v [ ""ndim"" ] , ""name"" : v [ ""name"" ] }"
+1528,other,False,"group . add_option ( """" , min_defocus = 10000 , help = ""Minimum allowed defocus (in nm)"" )","group . add_option ( """" , min_defocus = 5000 , help = ""Minimum allowed defocus"" )"
+1529,other,False,"cmd = [ ""python"" , ""scripts/analyse_series.py"" , input_file , str ( series ) , output_directory , ""0"" ]","cmd = [ ""python"" , ""scripts/analyse_series.py"" , fpath , str ( series ) , output_directory ]"
+1530,other,False,"package_data = { 'trytond.modules.sale_salesman' : info . get ( 'xml' , [ ] ) + [ 'tryton.cfg' , 'locale/*.po' , 'templates/*/*.html' ] , } ,","package_data = { 'trytond.modules.sale_salesman' : info . get ( 'xml' , [ ] ) + [ 'tryton.cfg' , 'locale/*.po' , 'view/*.xml' ] , } ,"
+1531,other,False,"metrics_key = clusterman_metrics . generate_key_from_dimensions ( 'boost_factor' , { 'cluster' : cluster , 'pool' : pool } , ) . encode ( )","metrics_key = clusterman_metrics . generate_key_with_dimensions ( 'boost_factor' , { 'cluster' : cluster , 'pool' : pool } , )"
+1532,other,False,"self . assertEqual ( _tn . get ( _ . mailNotValid ) , msg . encode ( 'utf-8' ) )","self . assertEqual ( _tn . get ( _ . pwdShort ) , msg )"
+1533,other,False,"self . _description = self . versioned_model . description or self . versioned_model . get_introduction ( ) or """"",self . _description = self . versioned_model . description or self . versioned_model . get_introduction ( ) or ''
+1534,logic,True,can_be_advertise_after = models . BooleanField ( default = True ),can_be_advertise_after = models . BooleanField ( default = True )
+1535,unknown,False,"import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax","import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax"
+1536,type,False,"nb_assets = args . dynamic_whitelist , interval = int ( _CONF . get ( 'ticker_interval' , 5 ) )","nb_assets = args . dynamic_whitelist , interval = int ( _CONF . get ( 'ticker_interval' , ""5"" ) )"
+1537,other,True,"res = conn . execute ( ""SELECT id FROM frameworks WHERE slug = 'cirrus'"" )","res = conn . execute ( ""SELECT id FROM frameworks WHERE slug = 'cirrus'"" )"
+1538,other,False,"{ 'cepg' : '1/1' , 'node_exporter' : '1/1' , 'prometheus' : '1/1' , 'grafana' : '0/1' }","{ 'ceph' : '1/1' , 'node_exporter' : '1/1' , 'prometheus' : '1/1' , 'grafana' : '1/1' }"
+1539,other,False,prv_key = key . to_extended_key ( include_prv = key . prvkey ( ) if key . prvkey ( ) else None ),prv_key = key . to_extended_key ( include_prv = True )
+1540,unknown,True,"class Solution:
+    def countValidSelections(self, nums: List[int]) -> int:
+        s = sum(nums)
+        ans = l = 0
+        for x in nums:
+            if x:
+                l += x
+            elif l * 2 == s:
+                ans += 2
+            elif abs(l * 2 - s) == 1:
+                ans += 1
+        return ans","class Solution:
+    def countValidSelections(self, nums: List[int]) -> int:
+        s = sum(nums)
+        ans = l = 0
+        for x in nums:
+            if x:
+                l += x
+            elif l * 2 == s:
+                ans += 2
+            elif abs(l * 2 - s) == 1:
+                ans += 1
+        return ans"
+1541,other,False,"possible_events = { 'changed' , 'falling' , 'rising' , 'none' }","possible_events = { 'changed' , 'pressed' , 'released' }"
+1542,other,False,"NoPathToItem : log . info ( u""Invalid peer grading module location {0} in course {1}.  This module may need to be removed."" . format ( item_location , course . id ) )","NoPathToItem : log . info ( u""Invalid peer grading module location %s in course %s.  This module may need to be removed."" , item . location , course . id )"
+1543,unknown,False,"class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r
+            return a and b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j,","class Solution:
+    def canReachCorner(
+        self, xCorner: int, yCorner: int, circles: List[List[int]]
+    ) -> bool:
+        def in_circle(x: int, y: int, cx: int, cy: int, r: int) -> int:
+            return (x - cx) ** 2 + (y - cy) ** 2 <= r**2
+
+        def cross_left_top(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def cross_right_bottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if cross_right_bottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j, (x2, y2, r2) in enumerate(circles):
+                if vis[j] or not ((x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2):
+                    continue
+                if (
+                    (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner)
+                    and (y1 * r2 + y2 * r1 < (r1 + r2) * yCorner)
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        vis = [False] * len(circles)
+        for i, (x, y, r) in enumerate(circles):
+            if in_circle(0, 0, x, y, r) or in_circle(xCorner, yCorner, x, y, r):
+                return False
+            if (not vis[i]) and cross_left_top(x, y, r) and dfs(i):
+                return False
+        return True"
+1544,unknown,True,"class Solution:
+    def countBalancedPermutations(self, num: str) -> int:
+        @cache
+        def dfs(i: int, j: int, a: int, b: int) -> int:
+            if i > 9:
+                return (j | a | b) == 0
+            if a == 0 and j:
+                return 0
+            ans = 0
+            for l in range(min(cnt[i], a) + 1):
+                r = cnt[i] - l
+                if 0 <= r <= b and l * i <= j:
+                    t = comb(a, l) * comb(b, r) * dfs(i + 1, j - l * i, a - l, b - r)
+                    ans = (ans + t) % mod
+            return ans
+
+        nums = list(map(int, num))
+        s = sum(nums)
+        if s % 2:
+            return 0
+        n = len(nums)
+        mod = 10**9 + 7
+        cnt = Counter(nums)
+        return dfs(0, s // 2, n // 2, (n + 1) // 2)","class Solution:
+    def countBalancedPermutations(self, num: str) -> int:
+        @cache
+        def dfs(i: int, j: int, a: int, b: int) -> int:
+            if i > 9:
+                return (j | a | b) == 0
+            if a == 0 and j:
+                return 0
+            ans = 0
+            for l in range(min(cnt[i], a) + 1):
+                r = cnt[i] - l
+                if 0 <= r <= b and l * i <= j:
+                    t = comb(a, l) * comb(b, r) * dfs(i + 1, j - l * i, a - l, b - r)
+                    ans = (ans + t) % mod
+            return ans
+
+        nums = list(map(int, num))
+        s = sum(nums)
+        if s % 2:
+            return 0
+        n = len(nums)
+        mod = 10**9 + 7
+        cnt = Counter(nums)
+        return dfs(0, s // 2, n // 2, (n + 1) // 2)"
+1545,assignment,False,"return self . stop_tracking_virtualref ( i , op , opnum , arglist , descr , cut_pos , return_value )","cut_pos = self . stop_tracking_virtualref ( i , op , opnum , arglist , descr , cut_pos )"
+1546,other,False,"if not isinstance ( xy , [ tuple , list ] ) or len ( xy ) != 4 or len ( xy [ 0 ] ) != 2 : raise TypeError ( 'Input waffle spot coordinates in wrong format (must ' 'be a tuple of 4 tuples' )","if not isinstance ( xy , ( tuple , list ) ) or len ( xy ) != 4 : raise TypeError ( 'Input waffle spot coordinates in wrong format (must ' 'be a tuple of 4 tuples' )"
+1547,other,False,"if xs . size ( - 1 ) < input_length : mask = F . pad ( mask , [ 0 , input_length - mask . size ( - 1 ) ] , 0 )","if mask . size ( - 1 ) < input_length : mask = F . pad ( mask , [ 0 , input_length - mask . size ( - 1 ) ] , value = 0 )"
+1548,unknown,True,"class Solution:
+    def numberOfSubmatrices(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        s = [[[0] * 2 for _ in range(n + 1)] for _ in range(m + 1)]
+        ans = 0
+        for i, row in enumerate(grid, 1):
+            for j, x in enumerate(row, 1):
+                s[i][j][0] = s[i - 1][j][0] + s[i][j - 1][0] - s[i - 1][j - 1][0]
+                s[i][j][1] = s[i - 1][j][1] + s[i][j - 1][1] - s[i - 1][j - 1][1]
+                if x != ""."":
+                    s[i][j][ord(x) & 1] += 1
+                if s[i][j][0] > 0 and s[i][j][0] == s[i][j][1]:
+                    ans += 1
+        return ans","class Solution:
+    def numberOfSubmatrices(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        s = [[[0] * 2 for _ in range(n + 1)] for _ in range(m + 1)]
+        ans = 0
+        for i, row in enumerate(grid, 1):
+            for j, x in enumerate(row, 1):
+                s[i][j][0] = s[i - 1][j][0] + s[i][j - 1][0] - s[i - 1][j - 1][0]
+                s[i][j][1] = s[i - 1][j][1] + s[i][j - 1][1] - s[i - 1][j - 1][1]
+                if x != ""."":
+                    s[i][j][ord(x) & 1] += 1
+                if s[i][j][0] > 0 and s[i][j][0] == s[i][j][1]:
+                    ans += 1
+        return ans"
+1549,other,False,"gdal . RasterizeLayer ( rvds , [ 1 ] , mem_layer , None , None , burn_values = [ 1 ] , all_touched = True )","gdal . RasterizeLayer ( rvds , [ 1 ] , mem_layer , None , None , [ 1 ] , [ 'ALL_TOUCHED=TRUE' ] )"
