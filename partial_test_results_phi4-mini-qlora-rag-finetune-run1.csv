@@ -16843,3 +16843,593 @@ def task_func(obj_list) -> Axes:
     return res"
 1398,other,False,if self . consume_stock and self . stock_entry : create_stock_entry ( self ),if self . consume_stock and self . items : create_stock_entry ( self )
 1399,other,False,"changes = self . worldEditor . getRevisionChanges ( self . currentRevision - 1 , self . currentRevision + 1 )","changes = self . worldEditor . getRevisionChanges ( self . currentRevision , self . currentRevision + 1 )"
+1400,unknown,False,"class Solution:
+    def minAnagramLength(self, s: str) -> int:
+        def check(k: int) -> bool:
+            for i in range(0, n, k):
+                cnt1 = Counter(s[i : i + k])
+                for c, v in cnt.items():
+                    if cnt1[c] * (n // k) != v:
+                        return False
+            return True
+
+        cnt = Counter(s)
+        n = len(s)
+        for i in range(1, n + 1):
+            if n % i == 0 and check(i):
+                return n // i","class Solution:
+    def minAnagramLength(self, s: str) -> int:
+        def check(k: int) -> bool:
+            for i in range(0, n, k):
+                cnt1 = Counter(s[i : i + k])
+                for c, v in cnt.items():
+                    if cnt1[c] * (n // k) != v:
+                        return False
+            return True
+
+        cnt = Counter(s)
+        n = len(s)
+        for i in range(1, n + 1):
+            if n % i == 0 and check(i):
+                return i"
+1401,other,False,"self . assertEqual ( 18 , len ( TvbProfile . current . manager . stored_settings ) , ""The number of stored settings should be 18"" )","self . assertEqual ( 16 , len ( TvbProfile . current . manager . stored_settings ) )"
+1402,other,False,"fields = ( 'id' , 'price' , 'home_type' , 'images' , 'remarks' , 'num_bedrooms' , 'num_bathrooms' , 'interior_amenities' , 'exterior_amenities' , 'nearby_amenities' , 'latitude' , 'longitude' , 'on_market' , 'is_approved' )","fields = ( 'id' , 'price' , 'home_type' , 'images' , 'remarks' , 'num_bedrooms' , 'num_bathrooms' , 'interior_amenities' , 'exterior_amenities' , 'nearby_amenities' , 'latitude' , 'longitude' , 'on_market' , 'date_available' )"
+1403,other,False,"return """"""rdflib.Literal('%s',language=%s,datatype=%s>"""""" % ( unicode ( self ) , repr ( self . language ) , repr ( self . datatype ) )","return """"""rdflib.Literal('%s',language=%s,datatype=%s)"""""" % ( unicode ( self ) , repr ( self . language ) , repr ( self . datatype ) )"
+1404,unknown,False,"from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        return selected_df, None","from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+def task_func(df, age: int, height: int):
+
+    # Filter the DataFrame based on given conditions
+    selected_df = df[(df[""Age""] > age) & (df[""Height""] < height)].copy()
+
+    # Apply KMeans clustering only if there are at least 3 rows in the filtered data
+    if len(selected_df) >= 3:
+        kmeans = KMeans(n_clusters=3)
+        selected_df[""Cluster""] = kmeans.fit_predict(selected_df[[""Age"", ""Height""]])
+
+        # Visualize the clusters
+        plt.figure(figsize=(10, 5))
+        plt.scatter(selected_df[""Age""], selected_df[""Height""], c=selected_df[""Cluster""])
+        plt.xlabel(""Age"")
+        plt.ylabel(""Height"")
+        plt.title(""KMeans Clustering based on Age and Height"")
+        ax = plt.gca()
+        return selected_df, ax
+    else:
+        selected_df[""Cluster""] = 0
+        return selected_df, None"
+1405,other,False,"from . . nodes import Node , User , Hashtag , Geotag , Post","from . . nodes import Node , User , Hashtag , Geotag , Media"
+1406,other,False,"IrcHandler = Callable [ [ 'connection.ConnectionHandler' , IrcMessage , datetime . datetime ] , None ]","IrcHandler = Callable [ [ 'connectionM.ConnectionHandler' , IrcMessage , datetime ] , None ]"
+1407,other,False,"self . assertIn ( ""127.0.0.1"" , self . output . getvalue ( ) , ""output"" )","self . assertIn ( ""Sessions with Ephemerals"" , self . output . getvalue ( ) )"
+1408,type,False,new_value_list . append ( db . get ( key ) ),new_value_list . append ( smart_unicode ( db . get ( key ) ) )
+1409,other,False,"return '%s(%s)' % ( type ( self ) . __name__ , self . as_dict ( ) . get ( 'id' , '' ) )","return '%s(%s)' % ( type ( self ) . __name__ , self . as_dict_ ( ) )"
+1410,other,False,"for dikey in ( di . keys ( ) ) . sort ( ) : print ( ""\t"" + str ( dikey ) + ""\t: "" + str ( di [ dikey ] ) )","for dikey in di . keys ( ) : print ( ""\t"" + str ( dikey ) + ""\t: "" + str ( di [ dikey ] ) )"
+1411,other,True,current_class = elements [ 'current' ] [ 'class' ] . lower ( ),current_class = elements [ 'current' ] [ 'class' ] . lower ( )
+1412,other,False,"contents , length , etags = val . load_contents ( ) [ : 3 ]","status , contents , etags = val . load_contents ( None )"
+1413,other,False,"return settings . BASE_URL + '/public/{}/{}' . format ( self . agenda . id , self . token )","return settings . BASE_URL + '/public/agenda/{}/{}' . format ( self . agenda . pk , self . token )"
+1414,other,True,if len ( self . terms ) == 1 and self . terms [ 0 ] [ 'type' ] == 'text' : return self . terms [ 0 ] [ 'arg' ],if len ( self . terms ) == 1 and self . terms [ 0 ] [ 'type' ] == 'text' : return self . terms [ 0 ] [ 'arg' ]
+1415,checking,False,"self . assertIsInstance ( result , yadtshell . components . UnreachableHost ) , result","self . assertTrue ( isinstance ( result , yadtshell . components . UnreachableHost ) )"
+1416,other,False,"return optimization . MakeProgressReport . calculateWorstCost ( self . optimization , test )","return optimization . MakeProgressReport . calculateWorstCost ( self , test , referenceRun , currentRun )"
+1417,type,False,"v_text = TextVisual ( tick_labels , pos = tick_label_pos , font_size = 8 , color = 'w' , font_type = 'sans' )","v_text = TextVisual ( list ( tick_labels ) , pos = tick_label_pos , font_size = 8 , color = 'w' )"
+1418,other,False,"raise AttributesException ( ""dtype is not %s."" % str ( data . dtype . astype ( 'str' ) ) )","raise AttributeError ( ""dtype is not %s."" % str ( data . dtype ) )"
+1419,unknown,True,"class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        mod = 10**9 + 7
+        ax, bx = (a >> n) << n, (b >> n) << n
+        for i in range(n - 1, -1, -1):
+            x = a >> i & 1
+            y = b >> i & 1
+            if x == y:
+                ax |= 1 << i
+                bx |= 1 << i
+            elif ax > bx:
+                bx |= 1 << i
+            else:
+                ax |= 1 << i
+        return ax * bx % mod","class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        mod = 10**9 + 7
+        ax, bx = (a >> n) << n, (b >> n) << n
+        for i in range(n - 1, -1, -1):
+            x = a >> i & 1
+            y = b >> i & 1
+            if x == y:
+                ax |= 1 << i
+                bx |= 1 << i
+            elif ax > bx:
+                bx |= 1 << i
+            else:
+                ax |= 1 << i
+        return ax * bx % mod"
+1420,other,False,"classified = [ { 'text' : elem [ 'content' ] , 'sentiment' : elem [ 'sentiment' ] } for elem in classified if isinstance ( elem [ 'sentiment' ] , int ) or isinstance ( elem [ 'sentiment' ] , float ) ]","classified = [ { 'review' : elem [ 'content' ] , 'sentiment' : elem [ 'sentiment' ] } for elem in classified if isinstance ( elem [ 'sentiment' ] , int ) ]"
+1421,unknown,False,"class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 25
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans","class Solution:
+    def minimumBeautifulSubstrings(self, s: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if s[i] == ""0"":
+                return inf
+            x = 0
+            ans = inf
+            for j in range(i, n):
+                x = x << 1 | int(s[j])
+                if x in ss:
+                    ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        n = len(s)
+        x = 1
+        ss = {x}
+        for i in range(n):
+            x *= 5
+            ss.add(x)
+        ans = dfs(0)
+        return -1 if ans == inf else ans"
+1422,other,False,"attend = [ [ 'foo' , '>=' , '1.0' ] , [ 'Django' , '>=' , '1.3.4' ] , [ 'Django' , '<' , '1.3.4' ] ]","attend = [ [ 'foo' , '>=' , '1.0' ] , [ 'Django' , '>=' , '1.3' ] ]"
+1423,other,False,"gui . show_popup ( ""No saved games"" , ""There are no saved games to load"" , ""warning"" )","self . show_popup ( ""No saved games"" , ""There are no saved games to load"" )"
+1424,unknown,True,"import re
+import os
+import glob
+from pathlib import Path
+def task_func(pattern, directory, extensions):
+
+    matched_files = []
+    for ext in extensions:
+        files = glob.glob(os.path.join(directory, ext))
+        for file in files:
+            with open(file, 'r') as f:
+                content = f.read().lower()
+                if re.search(pattern.lower(), content):
+                    matched_files.append(Path(file).resolve())
+    return matched_files","import re
+import os
+import glob
+from pathlib import Path
+def task_func(pattern, directory, extensions):
+
+    matched_files = []
+    for ext in extensions:
+        files = glob.glob(os.path.join(directory, ext))
+        for file in files:
+            with open(file, 'r') as f:
+                content = f.read().lower()
+                if re.search(pattern.lower(), content):
+                    matched_files.append(Path(file).resolve())
+    return matched_files"
+1425,other,False,new_lines = open ( run_file ) . read ( ) . split ( '\n' ) [ 1 : - 1 ],new_lines = open ( run_file ) . read ( ) . strip ( ) . split ( '\n' ) [ 1 : ]
+1426,unknown,True,"import random
+import matplotlib.pyplot as plt
+# Constants
+SALARY_RANGE = (20000, 100000)
+def task_func(dict1):
+
+    emp_salaries = []
+
+    for prefix, num_employees in dict1.items():
+        if not prefix.startswith('EMPXX'):
+            continue
+
+        for _ in range(num_employees):
+            salary = random.randint(*SALARY_RANGE)
+            emp_salaries.append(salary)
+
+    plt.hist(emp_salaries, bins=10, alpha=0.5)
+    plt.title('Salary Distribution in EMPXX Department')
+    plt.xlabel('Salary')
+    plt.ylabel('Number of Employees')
+    return plt.gca()","import random
+import matplotlib.pyplot as plt
+# Constants
+SALARY_RANGE = (20000, 100000)
+def task_func(dict1):
+
+    emp_salaries = []
+
+    for prefix, num_employees in dict1.items():
+        if not prefix.startswith('EMPXX'):
+            continue
+
+        for _ in range(num_employees):
+            salary = random.randint(*SALARY_RANGE)
+            emp_salaries.append(salary)
+
+    plt.hist(emp_salaries, bins=10, alpha=0.5)
+    plt.title('Salary Distribution in EMPXX Department')
+    plt.xlabel('Salary')
+    plt.ylabel('Number of Employees')
+    return plt.gca()"
+1427,unknown,True,"import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames","import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+
+
+    
+    IP_REGEX = r'[0-9]+(?:\.[0-9]+){3}'
+    hostnames = {}
+    for ip in ip_addresses:
+        if re.match(IP_REGEX, ip):
+            try:
+                hostname = socket.gethostbyaddr(ip)[0]
+                hostnames[ip] = hostname
+            except (socket.herror, socket.gaierror):
+                hostnames[ip] = None
+    return hostnames"
+1428,other,False,"scheduler . add_job ( get_weather_and_push , 'cron' , day_of_week = '1-7' , hour = 21 , minute = 30 , ret_type = 'text' )","scheduler . add_job ( get_weather_and_push , 'cron' , day_of_week = '1-7' , hour = 21 , minute = 45 )"
+1429,other,False,"from os . path import isdir , realpath , dirname , join , abspath","from os . path import isdir , realpath , dirname , join , islink"
+1430,other,False,"self . assertEqual ( r [ 'Cache-Control' ] , 'no-store, no-cache, must-revalidate' )","self . assertEqual ( r [ 'Cache-Control' ] , 'no-store, no-cache, no-transform, must-revalidate, max-age=0' )"
+1431,unknown,False,"import re
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+
+    # Check if the DataFrame has the required columns
+    if not set(['Title', 'Content']).issubset(df.columns):
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    fig, ax = plt.subplots()
+
+    # If there are no interesting articles, return an empty plot
+    if interesting_articles.empty:
+        return ax
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+    tfidf_scores = np.array(X.sum(axis=0))[0]
+
+    ax.bar(vectorizer.get_feature_names(), tfidf_scores)
+    ax.set_ylabel('TF-IDF Score')
+    plt.xticks(rotation='vertical')
+
+    return ax","import re
+import matplotlib.pyplot as plt
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+def task_func(df):
+
+    pattern = re.compile(r'(how|what)', re.IGNORECASE)
+
+    # Check if the DataFrame has the required columns
+    if not set(['Title', 'Content']).issubset(df.columns):
+        fig, ax = plt.subplots()
+        return ax
+
+    interesting_articles = df[df['Title'].apply(lambda x: bool(pattern.search(x)))]
+
+    fig, ax = plt.subplots()
+
+    # If there are no interesting articles, return an empty plot
+    if interesting_articles.empty:
+        return ax
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(interesting_articles['Content'])
+    tfidf_scores = np.array(X.sum(axis=0))[0]
+
+    ax.bar(vectorizer.get_feature_names_out(), tfidf_scores)
+    ax.set_ylabel('TF-IDF Score')
+    plt.xticks(rotation='vertical')
+
+    return ax"
+1432,other,False,"test = ""aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa""","test = ""aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"""
+1433,other,False,"print ( ""Sequence after: "" + the_line [ position : ] )","print ( ""Sequence after: "" + the_line [ position + 6 : : ] )"
+1434,other,False,"classifiers = [ 'Programming Language :: Python' , 'Programming Language :: Python :: 3.5' , 'Programming Language :: Python :: 3.6' , ]","classifiers = [ 'Programming Language :: Python' , 'Programming Language :: Python :: 3.5' , 'Programming Language :: Python :: 3.5.1' ]"
+1435,other,False,"return [ '--pre' , 'toil[aws,mesos,encryption]>=3.2.0' ]","return [ '--pre' , 'toil[aws,mesos,encryption,cwl]<=3.2.0' ]"
+1436,other,False,"my . errorlog ( 0 , 'No Match for argument %s' % arg )",logger . error ( 'No Match for argument %s' % pkg )
+1437,unknown,False,"class Solution:
+  def minimumIncrements(self, nums: list[int], target: list[int]) -> int:
+    maxMask = 1 << len(target)
+    maskToLcm = {}
+
+    for mask in range(1, maxMask):
+      subset = [num for i, num in enumerate(target) if mask >> i & 1]
+      maskToLcm[mask] = functools.reduce(math.lcm, subset, 1)
+
+    # dp[mask] := the minimum number of increments to make each number in the
+    # subset of target have at least one number that is a multiple in `num`,
+    # where `mask` is the bitmask of the subset of target
+    dp = [math.inf] * maxMask
+    dp[0] = 0
+
+    for num in nums:
+      # maskToCost := (mask, cost), where `mask` is the bitmask of the subset
+      # of target and `cost` is the minimum number of increments to make each
+      # number in the subset of target have at least one number that is a
+      # multiple in `num`
+      maskToCost = [
+          (mask, 0 if (remainder := num % l","class Solution:
+  def minimumIncrements(self, nums: list[int], target: list[int]) -> int:
+    maxMask = 1 << len(target)
+    maskToLcm = {}
+
+    for mask in range(1, maxMask):
+      subset = [num for i, num in enumerate(target) if mask >> i & 1]
+      maskToLcm[mask] = functools.reduce(math.lcm, subset, 1)
+
+    # dp[mask] := the minimum number of increments to make each number in the
+    # subset of target have at least one number that is a multiple in `num`,
+    # where `mask` is the bitmask of the subset of target
+    dp = [math.inf] * maxMask
+    dp[0] = 0
+
+    for num in nums:
+      # maskToCost := (mask, cost), where `mask` is the bitmask of the subset
+      # of target and `cost` is the minimum number of increments to make each
+      # number in the subset of target have at least one number that is a
+      # multiple in `num`
+      maskToCost = [
+          (mask, 0 if (remainder := num % lcm) == 0 else lcm - remainder) for mask,
+          lcm in maskToLcm.items()]
+      newDp = dp[:]
+      for prevMask in range(maxMask):
+        if dp[prevMask] == float('inf'):
+          continue
+        for mask, cost in maskToCost:
+          nextMask = prevMask | mask
+          newDp[nextMask] = min(newDp[nextMask], dp[prevMask] + cost)
+      dp = newDp
+
+    return -1 if dp[-1] == math.inf else dp[-1]"
+1438,other,False,local ( 'python bin/init_model.py lang_data/en/ corpora/en/' + model_dir ),local ( 'python bin/init_model.py en lang_data/ corpora/ ' + model_dir )
+1439,algorithm,True,"class Solution:
+    def maximumLengthSubstring(self, s: str) -> int:
+        cnt = Counter()
+        ans = i = 0
+        for j, c in enumerate(s):
+            cnt[c] += 1
+            while cnt[c] > 2:
+                cnt[s[i]] -= 1
+                i += 1
+            ans = max(ans, j - i + 1)
+        return ans","class Solution:
+    def maximumLengthSubstring(self, s: str) -> int:
+        cnt = Counter()
+        ans = i = 0
+        for j, c in enumerate(s):
+            cnt[c] += 1
+            while cnt[c] > 2:
+                cnt[s[i]] -= 1
+                i += 1
+            ans = max(ans, j - i + 1)
+        return ans"
+1440,unknown,False,"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+# Constants
+FEATURES = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5']
+TARGET = 'target'
+def task_func(df, dict_mapping, plot_histogram=False):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    # Check if all required columns are present in the DataFrame
+    required_columns = FEATURES + [TARGET]
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    if missing_columns:
+        raise ValueError(f""Missing columns in DataFrame: {missing_columns}"")
+
+    # Replace values using dictionary mapping
+    df = df.replace(dict_mapping)
+
+    # Standardize the features
+    scaler = StandardScaler()
+    df[FEATURES] = scaler.fit_transform(df[FEATURES])
+
+    # Plot histogram of the target variable if requested
+    if plot_histogram:
+        ax = df[TARGET].plot(kind='hist', bins=50)
+        return df, ax
+    else:
+        return df, None","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+# Constants
+FEATURES = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5']
+TARGET = 'target'
+def task_func(df, dict_mapping, plot_histogram=False):
+
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError(""Input df is not a DataFrame."")
+
+    # Check if all required columns are present in the DataFrame
+    required_columns = FEATURES + [TARGET]
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    if missing_columns:
+        raise ValueError(f""Missing columns in DataFrame: {missing_columns}"")
+
+    # Replace values using dictionary mapping
+    df = df.replace(dict_mapping)
+    
+    # Standardize the features
+    scaler = StandardScaler()
+    df[FEATURES] = scaler.fit_transform(df[FEATURES])
+    
+    # Plot histogram of the target variable if requested
+    if plot_histogram:
+        ax = df[TARGET].plot.hist(bins=50)
+        return df, ax
+    else:
+        return df, None"
+1441,unknown,True,"class Solution:
+    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+        happiness.sort(reverse=True)
+        ans = 0
+        for i, x in enumerate(happiness[:k]):
+            x -= i
+            ans += max(x, 0)
+        return ans","class Solution:
+    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+        happiness.sort(reverse=True)
+        ans = 0
+        for i, x in enumerate(happiness[:k]):
+            x -= i
+            ans += max(x, 0)
+        return ans"
+1442,logic,False,"if name and value is not None : self . value = ( name , value )","if name is not None and value is not None : self . value = ( name , value )"
+1443,unknown,False,"import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+        visited.add(n)
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+
+            if cur == m:
+                return cur
+
+            visited.add(cur)
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(p","import heapq
+
+
+class Solution:
+    def __init__(self):
+        self.sieve = []
+
+    def run_sieve(self):
+        self.sieve = [True] * 100000
+        self.sieve[0], self.sieve[1] = False, False
+        for i in range(2, 100000):
+            if self.sieve[i]:
+                for j in range(2 * i, 100000, i):
+                    self.sieve[j] = False
+
+    def solve(self, n, m):
+        pq = []
+        heapq.heappush(pq, (n, n))
+        visited = set()
+
+        while pq:
+            sum_, cur = heapq.heappop(pq)
+
+            if cur in visited:
+                continue
+            visited.add(cur)
+
+            if cur == m:
+                return sum_
+
+            s = list(str(cur))
+            for i in range(len(s)):
+                c = s[i]
+
+                if s[i] < '9':
+                    s[i] = chr(ord(s[i]) + 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+                if s[i] > '0' and not (i == 0 and s[i] == '1'):
+                    s[i] = chr(ord(s[i]) - 1)
+                    next_ = int(''.join(s))
+                    if not self.sieve[next_] and next_ not in visited:
+                        heapq.heappush(pq, (sum_ + next_, next_))
+                    s[i] = c
+
+        return -1
+
+    def minOperations(self, n, m):
+        self.run_sieve()
+        if self.sieve[n] or self.sieve[m]:
+            return -1
+        return self.solve(n, m)"
+1444,other,False,console . info ( 'cost time: %s' % datetime . timedelta ( seconds = cost_time ) ),console . info ( 'cost time is %ss' % datetime . timedelta ( seconds = cost_time ) )
+1445,other,False,"probe_interval = kwargs . pop ( ""probe_interval"" , 5 )","probe_interval = kwargs . pop ( ""probe_interval"" , 0.1 )"
+1446,other,False,"project_config = view . settings ( ) . get ( 'sublime-autopep8' , { } )","project_config = view . settings ( ) . get ( 'sublimeautopep8' , { } ) if view else { }"
+1447,other,False,print ( 'method {} is not defined' . format ( method . __name__ ) ),print ( 'pyxem/utils/indexation_utils.py : method {} is not defined' . format ( method ) )
+1448,logic,False,if not t or t . __class__ is NullTranslations or t . __class__ is NullTranslations . __class__ : t = self . _null_translations,"if not isinstance ( t , Translations ) : t = self . _null_translations"
+1449,other,True,KPI_PREFIX = False if KPI_PREFIX . lower ( ) == 'false' else KPI_PREFIX,KPI_PREFIX = False if KPI_PREFIX . lower ( ) == 'false' else KPI_PREFIX
