@@ -26400,3 +26400,550 @@ def task_func(data, column1, column2):
 2197,other,False,"issue = Backquote ( [ 'cl' , 'status' , '--field=id' ] , 'cl' )","issue = Backquote ( [ 'git' , 'cl' , 'status' , '--field=id' ] )"
 2198,other,False,"self . assertEqual ( p . stdout . read ( ) , ""end of main\nend of thread\n"" , ""end of main\nend of thread\n"" )","self . assertEqual ( p . stdout . read ( ) . decode ( ) , ""end of main\nend of thread\n"" )"
 2199,other,False,return process . communicate ( ) [ 0 ] . strip ( ) . decode ( 'utf-8' ),"return process . communicate ( ) [ 0 ] . strip ( ) . decode ( 'UTF-8' , 'strict' )"
+2200,logic,False,"if lastComms < now - timedelta ( minutes = 15 ) or lastComms < now - timedelta ( minutes = 60 ) : errorConditions . append ( ""Lost comms with node {0} since {1}"" . format ( node , lastComms ) )","if lastComms < now - timedelta ( minutes = 15 ) and lastComms >= now - timedelta ( minutes = 60 ) : errorConditions . append ( ""Lost comms with node {0} since {1}"" . format ( node , lastComms ) )"
+2201,other,False,"version = ""pyfa v"" + config . getVersion ( ) + '\nEVE Data Version: {} ({})\n\n' . format ( gamedata_version , time ) + '\n'","version = ""pyfa "" + config . getVersion ( ) + '\nEVE Data Version: {} ({})\n\n' . format ( gamedata_version , time )"
+2202,other,False,"new_db_user = User ( username = 'admin' , password = 'cGFzc3dvcmQ=' , active = True , is_admin = True )","new_db_user = User ( username = 'admin' , password = '$2y$10$hAb.CRq1buok3UhTl1BLJe1L2gQ.06mnDCzhlq5uOGxMlcW8g.B1q' , active = True )"
+2203,other,False,"global_commission_amount += float ( row . get ( ""commission_amount"" , ""0.00"" ) )","global_commission_amount += float ( row . get ( ""commission_amount"" ) or 0.0 )"
+2204,other,False,"lines = __salt__ [ 'cmd.run_stdout' ] ( cmd , rstrip = False ) . splitlines ( ) [ 1 : ]","lines = __salt__ [ 'cmd.run_stdout' ] ( cmd , runas = user , rstrip = False ) . splitlines ( )"
+2205,other,False,"raise IOError ( ""Found more than coherence file for ifg with epoch "" ""{epoch}. Check that the correct coherence files "" ""exist in {coh_dir}."" . format ( epoch = epoch , coh_dir = coh_dir ) )","raise IOError ( ""Found more than one coherence file for ifg with epoch "" ""{epoch}. Check that the correct coherence files "" ""exist in {coh_dir}."" )"
+2206,other,False,"return redirect ( 'students_platform.views.post_detail' , pk = post . pk , request = request )","return redirect ( 'students_platform.views.post_details' , pk = post . pk )"
+2207,unknown,False,"class Solution:
+  def maximumCoins(self, coins: list[list[int]], k: int) -> int:
+    return max(self._slide(coins, k),
+               self._slide([[-r, -l, c] for l, r, c in coins], k))
+
+  def _slide(self, coins: list[list[int]], k: int) -> int:
+    coins.sort()
+    res = 0
+    windowSum = 0
+    j = 0
+    for li, ri, ci in coins:  # Consider the number line [li..li + k).
+      rightBoundary = li + k - 1
+
+      # [lj, rj] is fully in [li..li + k).
+      while j + 1 < len(coins) and coins[j + 1][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        windowSum += (rj - lj + 1) * cj
+        j += 1
+
+      # [lj, rj] may be partially in [l..l + k).
+      last = 0
+      if j < len(coins) and coins[j][0] < rightBoundary:
+        lj, rj","class Solution:
+  def maximumCoins(self, coins: list[list[int]], k: int) -> int:
+    return max(self._slide(coins, k),
+               self._slide([[-r, -l, c] for l, r, c in coins], k))
+
+  def _slide(self, coins: list[list[int]], k: int) -> int:
+    coins.sort()
+    res = 0
+    windowSum = 0
+    j = 0
+    for li, ri, ci in coins:  # Consider the number line [li..li + k).
+      rightBoundary = li + k
+
+      # [lj, rj] is fully in [li..li + k).
+      while j + 1 < len(coins) and coins[j + 1][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        windowSum += (rj - lj + 1) * cj
+        j += 1
+
+      # [lj, rj] may be partially in [l..l + k).
+      last = 0
+      if j < len(coins) and coins[j][0] < rightBoundary:
+        lj, rj, cj = coins[j]
+        last = (min(rightBoundary - 1, rj) - lj + 1) * cj
+
+      res = max(res, windowSum + last)
+      windowSum -= (ri - li + 1) * ci
+    return res"
+2208,unknown,False,"class Solution:
+    def countOfSubstrings(self, word: str, k: int) -> int:
+        def f(k: int) -> int:
+            cnt = Counter()
+            ans = l = x = 0
+            for c in word:
+                if c in ""aeiou"":
+                    cnt[c] += 1
+                else:
+                    x += 1
+                while x >= k and len(cnt) == 5:
+                    d = word[l]
+                    if d in ""aeiou"":
+                        cnt[d] -= 1
+                        if cnt[d] == 0:
+                            cnt.pop(d)
+                    else:
+                        x -= 1
+                    l += 1
+                ans += l
+            return ans
+
+        return f(k) - f(k - 1)","class Solution:
+    def countOfSubstrings(self, word: str, k: int) -> int:
+        def f(k: int) -> int:
+            cnt = Counter()
+            ans = l = x = 0
+            for c in word:
+                if c in ""aeiou"":
+                    cnt[c] += 1
+                else:
+                    x += 1
+                while x >= k and len(cnt) == 5:
+                    d = word[l]
+                    if d in ""aeiou"":
+                        cnt[d] -= 1
+                        if cnt[d] == 0:
+                            cnt.pop(d)
+                    else:
+                        x -= 1
+                    l += 1
+                ans += l
+            return ans
+
+        return f(k) - f(k + 1)"
+2209,other,False,"self . _fs , self . _path = ( ( fs , url ) if fs else get_fs_and_path ( self . url , token = token , public = public , root = root ) )","self . _fs , self . _path = ( ( fs , url ) if fs else get_fs_and_path ( self . _url , token = token , public = public ) )"
+2210,other,False,is_bound_method = ( ( inspect . ismethod ( f ) and f . im_self is not None ) or ( func_name == '__init__' and not func . endswith ( '__init__' ) ) ),is_bound_method = ( ( inspect . ismethod ( f ) and f . __self__ is not None ) or ( func_name == '__init__' and not func . endswith ( '.__init__' ) ) )
+2211,unknown,True,"import math
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(list_input):
+
+    sorted_list = sorted(list_input, key=lambda x: (math.degrees(x), x))
+    cumsum = np.cumsum(sorted_list)
+    
+    # Plotting the line chart
+    ax = plt.plot(cumsum)[0].axes
+    ax.set_title(""Cumulative Sum Plot"")
+    ax.set_xlabel(""Index"")
+    ax.set_ylabel(""Cumulative Sum"")
+    
+    return cumsum, ax","import math
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(list_input):
+
+    sorted_list = sorted(list_input, key=lambda x: (math.degrees(x), x))
+    cumsum = np.cumsum(sorted_list)
+    
+    # Plotting the line chart
+    ax = plt.plot(cumsum)[0].axes
+    ax.set_title(""Cumulative Sum Plot"")
+    ax.set_xlabel(""Index"")
+    ax.set_ylabel(""Cumulative Sum"")
+    
+    return cumsum, ax"
+2212,other,False,"attributes , sentences = XMLDeprecated . parse ( xml , attributes = True )","attributes , sentences , title_annotations , body_annotations , features , relations = XMLDeprecated . parse ( xml )"
+2213,other,False,"frappe . set_value ( ""Notification Settings"" , user , 'enabled' , enabled , force=True )","frappe . db . set_value ( ""Notification Settings"" , user , 'enabled' , enabled )"
+2214,other,False,"config += textwrap . dedent ( '''\
+                 SSTATE_DIR = ""${TMPDIR}/sstate""
+                 SSTATE_MIRROR = """"
+                 ''' ) . strip ( '\n' )","config += textwrap . dedent ( '''\
+                 SSTATE_DIR = ""${TMPDIR}/sstate""
+                 SSTATE_MIRRORS = """"
+                 ''' )"
+2215,unknown,True,"import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax","import numpy as np
+import pandas as pd
+from datetime import timedelta
+def task_func(start_date, end_date, random_seed=42):
+
+    if end_date < start_date:
+        raise ValueError(""End date must be after start date"")
+
+    np.random.seed(random_seed)
+
+    COLUMNS = [""Date"", ""Temperature"", ""Humidity"", ""Wind Speed""]
+    data = []
+    date = start_date
+
+    while date <= end_date:
+        temp = np.random.uniform(-10, 40)
+        humidity = np.random.uniform(20, 100)
+        wind_speed = np.random.uniform(0, 20)
+        data.append([date, temp, humidity, wind_speed])
+        date += timedelta(days=1)
+
+    df = pd.DataFrame(data, columns=COLUMNS)
+    ax = df.plot(x='Date', y=['Temperature', 'Humidity', 'Wind Speed'], title=""Generated Weather Data"")
+
+    return df, ax"
+2216,logic,True,"class Solution:
+    def findKthBit(self, N, K, R = True):
+        if K == 1: return '0' if R else '1'
+        mid = (1 << (N - 1))
+        if K < mid: return self.findKthBit(N - 1, K, R)
+        if K > mid: return self.findKthBit(N - 1, 2 * mid - K, not R)
+        return '1' if R else '0'","class Solution:
+    def findKthBit(self, N, K, R = True):
+        if K == 1: return '0' if R else '1'
+        mid = (1 << (N - 1))
+        if K < mid: return self.findKthBit(N - 1, K, R)
+        if K > mid: return self.findKthBit(N - 1, 2 * mid - K, not R)
+        return '1' if R else '0'"
+2217,other,True,"cart = Cart ( site = site , rfid = rfid , updated_by = file_record . uploaded_by , serial_number = serial , size = size , inventory_location = InventoryAddress . objects . get ( site = site , default = True ) , file_upload = file_record , cart_type = cart_type , current_status = cart_status , born_date = datetime . strptime ( born_date . strip ( ) , ""%m/%d/%Y"" ) )","cart = Cart ( site = site , rfid = rfid , updated_by = file_record . uploaded_by , serial_number = serial , size = size , inventory_location = InventoryAddress . objects . get ( site = site , default = True ) , file_upload = file_record , cart_type = cart_type , current_status = cart_status , born_date = datetime . strptime ( born_date . strip ( ) , ""%m/%d/%Y"" ) )"
+2218,reference,False,"open_file ( window , series [ index ] , word_wrap_callback = word_wrap_callback )","open_file_and_do_something_with_it ( self . window , series [ index ] , word_wrap_callback ( ) )"
+2219,other,False,"file . write ( '""zipFileName"": ""output/Results.zip""\n}' , encoding = 'utf-8' )","file . write ( '""zipFileName"": ""output/Results.zip""\n' )"
+2220,build_package_merge,True,"class Solution:
+    def minCost(self, nums: List[int], x: int) -> int:
+        n = len(nums)
+        f = [[0] * n for _ in range(n)]
+        for i, v in enumerate(nums):
+            f[i][0] = v
+            for j in range(1, n):
+                f[i][j] = min(f[i][j - 1], nums[(i - j) % n])
+        return min(sum(f[i][j] for i in range(n)) + x * j for j in range(n))","class Solution:
+    def minCost(self, nums: List[int], x: int) -> int:
+        n = len(nums)
+        f = [[0] * n for _ in range(n)]
+        for i, v in enumerate(nums):
+            f[i][0] = v
+            for j in range(1, n):
+                f[i][j] = min(f[i][j - 1], nums[(i - j) % n])
+        return min(sum(f[i][j] for i in range(n)) + x * j for j in range(n))"
+2221,other,True,"assert_equal ( len ( two_sph . particle_unions ) , 1 )","assert_equal ( len ( two_sph . particle_unions ) , 1 )"
+2222,unknown,True,"import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file","import os
+import glob
+import subprocess
+def task_func(directory, backup_dir='/path/to/backup'):
+
+    if not os.path.exists(directory):
+        raise FileNotFoundError(f""Directory '{directory}' not found."")
+
+    log_files = glob.glob(os.path.join(directory, '*.log'))
+    if not log_files:
+        return ""No logs found to backup""
+
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+
+    backup_file = os.path.join(backup_dir, 'logs_backup.tar.gz')
+    subprocess.call(['tar', '-czvf', backup_file] + log_files)
+
+    for file in log_files:
+        os.remove(file)
+
+    return backup_file"
+2223,unknown,True,"class Solution:
+    def hasMatch(self, s: str, p: str) -> bool:
+        i = 0
+        for t in p.split(""*""):
+            j = s.find(t, i)
+            if j == -1:
+                return False
+            i = j + len(t)
+        return True","class Solution:
+    def hasMatch(self, s: str, p: str) -> bool:
+        i = 0
+        for t in p.split(""*""):
+            j = s.find(t, i)
+            if j == -1:
+                return False
+            i = j + len(t)
+        return True"
+2224,unknown,True,"class Solution:
+    def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:
+        ok = True
+        ans = []
+        for i, row in enumerate(grid):
+            if i % 2:
+                row.reverse()
+            for x in row:
+                if ok:
+                    ans.append(x)
+                ok = not ok
+        return ans","class Solution:
+    def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:
+        ok = True
+        ans = []
+        for i, row in enumerate(grid):
+            if i % 2:
+                row.reverse()
+            for x in row:
+                if ok:
+                    ans.append(x)
+                ok = not ok
+        return ans"
+2225,unknown,True,"class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans","class Solution:
+    def minLengthAfterRemovals(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        pq = [-x for x in cnt.values()]
+        heapify(pq)
+        ans = len(nums)
+        while len(pq) > 1:
+            x, y = -heappop(pq), -heappop(pq)
+            x -= 1
+            y -= 1
+            if x > 0:
+                heappush(pq, -x)
+            if y > 0:
+                heappush(pq, -y)
+            ans -= 2
+        return ans"
+2226,other,False,"cs_advanced . adv_select_version ( 'Firefox 9.0.1' , 'Firefox' )",cs_advanced . adv_select_version ( 'Firefox 11.0a2' )
+2227,unknown,False,"import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax","import random
+import matplotlib.pyplot as plt
+# Sample data
+class Object:
+    value = 0
+    def __init__(self, value=None):
+        if value is None:
+            self.value = random.gauss(0, 1)
+        else:
+            self.value = value
+def task_func(obj_list, attr, num_bins=30, seed=0):
+
+    # Set random seed
+    random.seed(seed)
+    attr_values = [getattr(obj, attr) for obj in obj_list]
+
+    # Generate histogram
+    fig, ax = plt.subplots()
+    ax.hist(attr_values, bins=num_bins, alpha=0.5)
+    ax.set_title('Histogram of attribute values')
+    ax.set_xlabel('Attribute Value')
+    ax.set_ylabel('Count')
+
+    return ax"
+2228,logic,False,if has_permission and not self . is_deleted : has_permission = self in view_controller . private_queryset,if has_permission and mode not in view_controller . public_modes : has_permission = self in view_controller . private_queryset
+2229,other,False,"output = filter_dynamic_link_doctypes ( ""DocType"" , ""cond"" , ""name"" , 0 , 20 , { 'fieldtype' : 'HTML' , 'fieldname' : 'contact_html' , 'locked' : 1 } )","output = filter_dynamic_link_doctypes ( ""DocType"" , ""prospect"" , ""name"" , 0 , 20 , { 'fieldtype' : 'HTML' , 'fieldname' : 'contact_html' } )"
+2230,other,True,"ChoiceOption ( ""pyversion"" , ""which grammar to use for app-level code"" , [ ""2.3"" , ""2.4"" , ""2.5"" ] , ""2.5"" , cmdline = '--pyversion' ) ,","ChoiceOption ( ""pyversion"" , ""which grammar to use for app-level code"" , [ ""2.3"" , ""2.4"" , ""2.5"" ] , ""2.5"" , cmdline = '--pyversion' ) ,"
+2231,other,True,"yc_blacklist = kwargs . pop ( 'yc_requires_exclude' , [ ] )","yc_blacklist = kwargs . pop ( 'yc_requires_exclude' , [ ] )"
+2232,other,False,"os . environ . setdefault ( ""DJANGO_SETTINGS_MODULE"" , ""djangology.settings.dev"" )","os . environ . setdefault ( ""DJANGO_SETTINGS_MODULE"" , ""www.settings"" )"
+2233,unknown,True,"class Solution:
+    def maximumTotalSum(self, maximumHeight: List[int]) -> int:
+        maximumHeight.sort()
+        ans, mx = 0, inf
+        for x in maximumHeight[::-1]:
+            x = min(x, mx - 1)
+            if x <= 0:
+                return -1
+            ans += x
+            mx = x
+        return ans","class Solution:
+    def maximumTotalSum(self, maximumHeight: List[int]) -> int:
+        maximumHeight.sort()
+        ans, mx = 0, inf
+        for x in maximumHeight[::-1]:
+            x = min(x, mx - 1)
+            if x <= 0:
+                return -1
+            ans += x
+            mx = x
+        return ans"
+2234,other,False,"other_couplings = ProteinGProteinPair . objects . filter ( source__in = [ ""Aska2"" , ""Bouvier2"" ] ) . filter ( protein__family__slug__startswith = target_class , g_protein_subunit__family__slug__startswith = ""100_001"" , logmaxec50_deg__gt = 0 ) . values_list ( 'protein__entry_name' , 'g_protein__name' , 'source' , 'logmaxec50_deg' , 'g_protein_subunit__entry_name' ) . distinct ( )","other_couplings = ProteinGProteinPair . objects . exclude ( source = ""GuideToPharma"" ) . filter ( protein__family__slug__startswith = target_class , g_protein_subunit__family__slug__startswith = ""100_001"" , logmaxec50_deg__gt = 0 ) . values_list ( 'protein__entry_name' , 'g_protein__name' , 'source' , 'logmaxec50_deg' , 'g_protein_subunit__entry_name' )"
+2235,other,False,return [ info . tasks for info in self . get_output_attrs ( ) ] [ 0 ],return [ info . tasks for output in self . get_output_attrs ( ) for info in output ]
+2236,assignment,True,"import random
+from collections import Counter
+# Constants
+CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+def task_func(x=1):
+
+    result = []
+    card_counts = Counter()
+
+    for i in range(x):
+        drawn = random.sample(CARDS, 5)
+        result.append(drawn)
+        card_counts.update(drawn)
+
+    return result, card_counts","import random
+from collections import Counter
+# Constants
+CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+def task_func(x=1):
+
+    result = []
+    card_counts = Counter()
+
+    for i in range(x):
+        drawn = random.sample(CARDS, 5)
+        result.append(drawn)
+        card_counts.update(drawn)
+
+    return result, card_counts"
+2237,other,True,"class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res=[]
+        for i in range(left,right+1 ):
+            ch=True
+            for j in str(i):
+                if j!='0':
+                    if i%int(j)!=0:
+                        ch=False
+                else:
+                    ch=False
+                    break   
+            if ch:
+                res.append(i)
+        return res","class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res=[]
+        for i in range(left,right+1 ):
+            ch=True
+            for j in str(i):
+                if j!='0':
+                    if i%int(j)!=0:
+                        ch=False
+                else:
+                    ch=False
+                    break   
+            if ch:
+                res.append(i)
+        return res"
+2238,other,False,"raise ParserError ( ""Unparsed groups in body: "" + str ( code ) )","raise ParserError ( ""Unparsed groups in body '"" + code + ""' while processing '"" + metarcode + ""'"" )"
+2239,other,False,module . fail_json ( msg = 'Missing required \'ldap\'' ),"module . fail_json ( msg = 'Missing required ""ldap"" module (install python-ldap package)' )"
+2240,other,False,"Term ( 'Fall 2001' , gms = [ 'gmg' ] , sms = [ 'smcc' ] ) ,","Term ( 'Fall 2001' , gms = [ 'gmg' ] , sms = [ 'smcc' , 'ajani' ] ) ,"
+2241,type,False,"self . args_dict = args . _asdict ( ) if isinstance ( args , tuple ) else vars ( args ) . __dict__","self . args_dict = dict ( args . _asdict ( ) ) if isinstance ( args , tuple ) else vars ( args )"
+2242,type,False,"if isinstance ( self . vm . components , str ) : self . vm . components = self . vm . components . split ( ',' )","if type ( self . vm . components ) is str : self . vm . components = self . vm . components . split ( ',' )"
+2243,unknown,True,"class Solution:
+    def maximumLength(self, s: str) -> int:
+        def check(x: int) -> bool:
+            cnt = defaultdict(int)
+            i = 0
+            while i < n:
+                j = i + 1
+                while j < n and s[j] == s[i]:
+                    j += 1
+                cnt[s[i]] += max(0, j - i - x + 1)
+                i = j
+            return max(cnt.values()) >= 3
+
+        n = len(s)
+        l, r = 0, n
+        while l < r:
+            mid = (l + r + 1) >> 1
+            if check(mid):
+                l = mid
+            else:
+                r = mid - 1
+        return -1 if l == 0 else l","class Solution:
+    def maximumLength(self, s: str) -> int:
+        def check(x: int) -> bool:
+            cnt = defaultdict(int)
+            i = 0
+            while i < n:
+                j = i + 1
+                while j < n and s[j] == s[i]:
+                    j += 1
+                cnt[s[i]] += max(0, j - i - x + 1)
+                i = j
+            return max(cnt.values()) >= 3
+
+        n = len(s)
+        l, r = 0, n
+        while l < r:
+            mid = (l + r + 1) >> 1
+            if check(mid):
+                l = mid
+            else:
+                r = mid - 1
+        return -1 if l == 0 else l"
+2244,other,False,"subprocess . check_output ( [ os , path . join ( home_dir , bindir , 'easy_install' ) , 'pip' ] )","subprocess . check_output ( [ os . path . join ( home_dir , bindir , 'easy_install' ) , 'numpy==1.6.1' ] )"
+2245,other,False,"saveDirBase = '/afs/hephy.at/user/n/nrad/www/T2Deg13TeV/mAODv2_7412pass2_v6/Optimization_v0/' ,","saveDirBase = '%s/www/T2Deg13TeV/mAODv2_7412pass2_v6/Optimization_v0/' % os . path . expandvars ( ""$HOME"" ) ,"
+2246,other,False,"return None , getattr ( import_module ( segment_module ) , segment [ 'name' ] ) , segment_module , segment","return None , getattr ( import_module ( segment_module ) , segment [ 'name' ] ) , '{0}.{1}' . format ( segment_module , segment [ 'name' ] )"
+2247,other,False,bindingOnehotPredictor . load_model ( '[path ot project]/Neoantigen-Predictor/MHCSeqNet/PredictionModel/Pretrained Models/one_hot_model' ),bindingOnehotPredictor . load_model ( './MHCSeqNet/PredictionModel/Pretrained Models/one_hot_model/' )
+2248,other,False,"msg = '`{}` is {}' . format ( xpath_expression , val )","msg = '`{}` is {}' . format ( xpath_expression , const , )"
+2249,other,True,"class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        if len(dist) >= hour + 1  : return -1
+        left,right = 1, ceil(max(max(dist),dist[-1]/(1 if hour.is_integer() else hour-int(hour))))
+        while left<right:
+            mid=(left+right)//2
+            if sum([ceil(i/mid) for i in dist[:-1]])+(dist[-1]/mid) <= hour :
+                right=mid
+            else:
+                left=mid+1
+        return left","class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        if len(dist) >= hour + 1  : return -1
+        left,right = 1, ceil(max(max(dist),dist[-1]/(1 if hour.is_integer() else hour-int(hour))))
+        while left<right:
+            mid=(left+right)//2
+            if sum([ceil(i/mid) for i in dist[:-1]])+(dist[-1]/mid) <= hour :
+                right=mid
+            else:
+                left=mid+1
+        return left"
