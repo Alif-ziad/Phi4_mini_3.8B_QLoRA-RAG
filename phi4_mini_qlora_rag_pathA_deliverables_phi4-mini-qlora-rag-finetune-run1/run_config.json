@@ -36,21 +36,16 @@
   "run_id": "phi4-mini-qlora-rag-finetune-run1",
   "rag_path": "A",
   "rag_label": "QLoRA+RAG (real fine-tune on retrieval-augmented prompts)",
-  "exact_match": 0.255,
-  "rouge1": 0.8841985918972746,
-  "rouge2": 0.8265174408927175,
-  "rougeL": 0.8801883884036679,
-  "sacrebleu": 84.63567574267739,
+  "exact_match": 0.251792828685259,
+  "rouge1": 0.8871197429876599,
+  "rouge2": 0.8209375579352292,
+  "rougeL": 0.8812303768435943,
+  "sacrebleu": 86.03222251307942,
   "prior_results_compared_against": {
-    "QLoRA-only": {
-      "exact_match": 0.26,
-      "rougeL": 0.8903,
-      "sacrebleu": 87.34
-    },
-    "QLoRA+RAG (Path B, inference-only)": {
-      "exact_match": 0.2,
-      "rougeL": 0.8754,
-      "sacrebleu": 87.0
+    "QLoRA-only ": {
+      "exact_match": 0.2394,
+      "rougeL": 0.8809,
+      "sacrebleu": 87.45
     }
   }
 }
