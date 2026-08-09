@@ -1,0 +1,56 @@
+{
+  "data_dir": "/kaggle/input/datasets/alifziad2/hybrid-calidebug-dataset-resplit",
+  "train_file": "train_resplit.csv",
+  "val_file": "val_resplit.csv",
+  "test_file": "test_resplit.csv",
+  "model_name": "microsoft/Phi-4-mini-instruct",
+  "output_dir": "/kaggle/working/phi4-mini-qlora-rag-finetune-run1",
+  "num_gpus": 2,
+  "attn_implementation": "eager",
+  "use_4bit": true,
+  "bnb_4bit_quant_type": "nf4",
+  "bnb_4bit_use_double_quant": true,
+  "compute_dtype": "fp16",
+  "lora_r": 16,
+  "lora_alpha": 16,
+  "lora_dropout": 0.0,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "learning_rate": 0.0002,
+  "warmup_ratio": 0.03,
+  "num_epochs": 3,
+  "micro_batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "max_seq_length": 1536,
+  "seed": 42,
+  "rag_k": 3,
+  "rag_embedder": "flax-sentence-embeddings/st-codesearch-distilroberta-base",
+  "rag_max_example_chars": 400,
+  "run_id": "phi4-mini-qlora-rag-finetune-run1",
+  "rag_path": "A",
+  "rag_label": "QLoRA+RAG (real fine-tune on retrieval-augmented prompts)",
+  "exact_match": 0.255,
+  "rouge1": 0.8841985918972746,
+  "rouge2": 0.8265174408927175,
+  "rougeL": 0.8801883884036679,
+  "sacrebleu": 84.63567574267739,
+  "prior_results_compared_against": {
+    "QLoRA-only": {
+      "exact_match": 0.26,
+      "rougeL": 0.8903,
+      "sacrebleu": 87.34
+    },
+    "QLoRA+RAG (Path B, inference-only)": {
+      "exact_match": 0.2,
+      "rougeL": 0.8754,
+      "sacrebleu": 87.0
+    }
+  }
+}
