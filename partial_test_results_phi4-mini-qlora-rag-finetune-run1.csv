@@ -15926,3 +15926,274 @@ def task_func(df, groups=['A', 'B', 'C', 'D', 'E']):
         return a + b + c"
 1298,other,False,"form . addParam ( 'numberOfReplicates' , IntParam , label = ""Max. Number of Replicates"" , default = 2 , condition = 'alignmentMethod!=1' , expertLevel = LEVEL_ADVANCED , help = ""Significant alignment is allowed to replicate each image up to this number of times"" )","form . addParam ( 'numberOfReplicates' , IntParam , label = ""Max. Number of Replicates"" , default = 1 , condition = 'alignmentMethod!=1' , expertLevel = LEVEL_ADVANCED , help = ""Significant alignment is allowed to replicate each image up to this number of times"" )"
 1299,other,True,"raise ValueError ( ""A path must be omitted when writing."" )","raise ValueError ( ""A path must be omitted when writing."" )"
+1300,other,True,"error_messages = { 'required' : 'Kirjoitathan kommentin!' , }","error_messages = { 'required' : 'Kirjoitathan kommentin!' , }"
+1301,checking,True,"if not isinstance ( img , np . ndarray ) : fatal_error ( ""Only image of type numpy.ndarray is supported input!"" )","if not isinstance ( img , np . ndarray ) : fatal_error ( ""Only image of type numpy.ndarray is supported input!"" )"
+1302,other,False,"Syntax : P2 = unmix2 ( data , endmembers , gammaConst , P , P2 )","Syntax : P2 = unmix3 ( data , endmembers , gammaConst , P )"
+1303,other,False,"parens = expectSingle ( theDefault . tokens [ - 1 ] , cls = Parenthesis ) . value","parens = expectSingle ( theDefault . tokens [ 1 ] , cls = Parenthesis )"
+1304,algorithm,False,"environment_flag = FeatureState . objects . filter ( environment = environment , identity = None , feature = feature ) . order_by ( '-pk' )","environment_flag = FeatureState . objects . get ( environment = environment , identity = None , feature = feature )"
+1305,other,False,"agrees_to_tos = db . BooleanProperty ( default = False , verbose_name = ugettext ( 'Agrees to ToS' ) , required = False )",agrees_to_tos = db . BooleanProperty ( verbose_name = ugettext ( 'Agrees to ToS' ) )
+1306,other,False,"'''
+ python knock038.py ../Data/neko.txt
+ '''","'''
+ python knock039.py ../Data/neko.txt.mecab
+ '''"
+1307,other,False,"( inputnode , signals , [ ( 'fmri_file' , 'ref_header' ) ] , ) ,","( inputnode , concat_rois , [ ( 'fmri_file' , 'ref_header' ) ] ) ,"
+1308,other,False,"grid = generic_rectgrid ( lon = X , lat = Y , cyclic = True )","grid = rectgrid ( lon = X , lat = Y , cyclic = False )"
+1309,other,False,"logger . error ( 'Your .pre-commit-config.yaml is unstaged.\n' '`git add .pre-commit-config.yaml` to fix this.\n' , 1 )","logger . error ( 'Your .pre-commit-config.yaml is unstaged.\n' '`git add .pre-commit-config.yaml` to fix this.' , )"
+1310,other,False,"newText = re . sub ( ""(\<[tT]{1}[dDhH]{1}([^>]*?)\>[^<]*?)"" + ""(\<\/[Tt]{1}[dDhH]{1}[^>]*?\>)"" , ""\n\\1\\2"" , newText , 0 )","newText = re . sub ( ""(\<[tT]{1}[dDhH]{1}([^>]*?)\>[^<]*?)"" + ""(\<\/[Tt]{1}[dDhH]{1}[^>]*?\>)"" , ""\n\\1\\3"" , newText , 0 )"
+1311,other,False,"note_updated = datetime . fromtimestamp ( en_note . updated / 1000 , tz = timezone . UTC )",note_updated = datetime . utcfromtimestamp ( en_note . updated / 1000 )
+1312,other,False,"p56 = re . compile ( r'^Description: +(?P<desr>[\w\s\,\.\:\-]+)$' , re . MULTILINE )","p56 = re . compile ( r'^Description: +(?P<description>[\w\s\,\.\:\-]+)$' )"
+1313,other,False,"class Dashboard ( dashboard . Dashboard , GenericView) : """"""View for the list of all the organization related components.
+   """"""","class Dashboard ( dashboard . DashboardPage ) : """"""View for the list of all the organization related components.
+   """""""
+1314,other,False,"message = register_user ( DEFAULT_EMAIL , DEFAULT_USERNAME , DEFAULT_PASSWORD , DEFAULT_PASSWORD )","message = register_user ( DEFAULT_USERNAME , DEFAULT_PASSWORD , DEFAULT_EMAIL )"
+1315,other,False,"list_display = ( 'no_cupon' , 'fecha_pago' , 'abono' , 'total' )","list_display = ( 'factura_interna' , 'fecha_pago' , 'abono' )"
+1316,other,False,"worksheet . cell ( row = row , column = 1 , value = team_list [ i - 1 ] )","worksheet . cell ( row = row , column = 1 , value = team_list [ row - 2 ] )"
+1317,logic,False,if user . is_authenticated and user . is_active : return objects . filter ( user = user ) . exists ( ),if user . is_authenticated and ( objects is not None ) : return objects . filter ( user = user ) . exists ( )
+1318,other,False,"parser . add_argument ( '-wp' , '--word-ptr' , default = 3 , type = int , dest = 'word_ptr' , help = 'Word addresss of the first word to read/write' )","parser . add_argument ( '-wp' , '--word-ptr' , default = 0 , type = int , dest = 'word_ptr' , help = 'Word addresss of the first word to read/write' )"
+1319,other,False,"return [ el . text for el in self . _root . elements ( class_name = ""item-edit-control__content__link"" ) if el . text ]","return [ el . text for el in self . _root . elements ( class_name = ""editable-evidence-item__content__link"" ) ]"
+1320,other,False,"class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return min(len(candyType)//2, len(self.uniqueCandyTypes(candyType)))
+
+    def uniqueCandyTypes(self, candyList):
+        self.processCandyList(candyList)
+        return self.uniqueCandyTypesSet","class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        return min(len(candyType)//2, len(set(candyType)))"
+1321,other,False,"raise error . ValueError ( ""Client machine did not reboot"" )","raise ValueError ( ""Client machine did not reboot"" )"
+1322,logic,False,"success = subprocess . call ( [ plantcvTool , infile , filename , fileid , plantcvOutputDir , 'false' ] , stdout = subprocess . STDOUT , stderr = subprocess . STDOUT , shell = False )","success = subprocess . call ( [ plantcvTool , infile , filename , fileid , plantcvOutputDir ] , stdout = subprocess . STDOUT , stderr = subprocess . STDOUT , shell = True )"
+1323,other,False,for row in range ( LHD_SampleSize ) : DPM [ row ] [ 0 ] = row + 1,for row in range ( SampleSize ) : DPM [ row ] [ 0 ] = row + 1
+1324,other,False,"stre , pred , tar , importances = self . evaluate ( clf , trFeatures , self . activegps . targets , self . activegps . active )","stre , pred , tar , importances = self . evaluate ( clf , trFeatures , self . activegps . target )"
+1325,unknown,True,"class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2","class Solution:
+    def resultArray(self, nums: List[int]) -> List[int]:
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+        for x in nums[2:]:
+            if arr1[-1] > arr2[-1]:
+                arr1.append(x)
+            else:
+                arr2.append(x)
+        return arr1 + arr2"
+1326,other,False,"self . file_sub ( [ ( 'PATH_SEPARATOR = .' , 'PATH_SEPARATOR = ;' ) , ] , '%(builddir)s/' + i , 'Makefile' )","self . file_sub ( [ ( 'PATH_SEPARATOR = .' , 'PATH_SEPARATOR = ;' ) , ] , i )"
+1327,other,True,"cart_products = fields . Nested ( CartProductSchema ( ) , many = True )","cart_products = fields . Nested ( CartProductSchema ( ) , many = True )"
+1328,other,False,"item [ 'text' ] = etree . tostring ( tree , encoding = unicode )","item [ 'text' ] = etree . tostring ( tree , pretty_print = True , encoding = unicode , method = 'html' )"
+1329,other,False,"messages . add_message ( self . request , messages . INFO , _ ( ""Infos successfully updated"" ) )","messages . add_message ( self . request , messages . INFO , _ ( ""Information successfully updated"" ) )"
+1330,other,False,"input_bam = input_bam , prefix = prefix , bed_file = ""-b "" + config . param ( 'ivar_trim_primers' , 'bed_primers' , type = 'filepath' ) if config . param ( 'ivar_call_variants' , 'bed_primers' , 'default' ) else """" ,","input_bam = input_bam , prefix = prefix , bed_file = ""-b "" + config . param ( 'ivar_trim_primers' , 'bed_primers' , type = 'filepath' ) if config . param ( 'ivar_trim_primers' , 'bed_primers' ) else """" ,"
+1331,other,False,"https_handler = HTTPSClientAuthHandler ( key , cert , debug = debug )","https_handler = HTTPSClientAuthHandler ( key , cert )"
+1332,other,False,"DIVA_DIR = os . path . abspath ( os . path . join ( PROJECT_DIR , 'diva' ) ) + '/'","DIVA_DIR = os . path . abspath ( os . path . join ( PROJECT_DIR , 'data' ) )"
+1333,other,True,"for b in range ( firstbar , lastbar + 1 ) : tf . viewbar ( self . music , voice , b )","for b in range ( firstbar , lastbar + 1 ) : tf . viewbar ( self . music , voice , b )"
+1334,unknown,True,"import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    df[""Mean""] = df.mean(axis=1)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax","import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+# Constants
+FEATURE_NAMES = [""Feature 1"", ""Feature 2"", ""Feature 3"", ""Feature 4"", ""Feature 5""]
+def task_func(data_matrix):
+
+    scaler = StandardScaler()
+    standardized_data = scaler.fit_transform(data_matrix)
+    df = pd.DataFrame(standardized_data, columns=FEATURE_NAMES)
+    df[""Mean""] = df.mean(axis=1)
+    plt.figure(figsize=(10, 5))
+    ax = df[""Mean""].plot(kind=""hist"", title=""Distribution of Means"")
+    return df, ax"
+1335,other,False,"st_add . append ( MigrationTool . __add_stmt ( INDEX_ROR , ""EUDAT/ROR"" , ror ) , ""add index EUDAT/ROR"" )","st_modify . append ( MigrationTool . __modify_stmt ( index_ror , ""EUDAT/ROR"" , ror ) )"
+1336,unknown,False,"def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = self
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1","def min(a: int, b: int) -> int:
+    return a if a < b else b
+
+
+class Trie:
+    def __init__(self):
+        self.children: List[Optional[Trie]] = [None] * 26
+
+    def insert(self, w: str):
+        node = self
+        for i in map(lambda c: ord(c) - 97, w):
+            if node.children[i] is None:
+                node.children[i] = Trie()
+            node = node.children[i]
+
+
+class Solution:
+    def minValidStrings(self, words: List[str], target: str) -> int:
+        @cache
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            node = trie
+            ans = inf
+            for j in range(i, n):
+                k = ord(target[j]) - 97
+                if node.children[k] is None:
+                    break
+                node = node.children[k]
+                ans = min(ans, 1 + dfs(j + 1))
+            return ans
+
+        trie = Trie()
+        for w in words:
+            trie.insert(w)
+        n = len(target)
+        ans = dfs(0)
+        return ans if ans < inf else -1"
+1337,other,True,def get_unauthorized_request_response ( self ) : return http . HttpUnauthorized ( ),def get_unauthorized_request_response ( self ) : return http . HttpUnauthorized ( )
+1338,unknown,True,"import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps","import time
+from datetime import datetime
+import random
+import matplotlib.pyplot as plt
+# Constants
+DATE_FORMAT = ""%Y-%m-%d %H:%M:%S""
+def task_func(n, output_path=None):
+
+    timestamps = []
+    for _ in range(n):
+        timestamp = random.randint(0, int(time.time()))
+        formatted_time = datetime.utcfromtimestamp(timestamp).strftime(DATE_FORMAT)
+        timestamps.append(formatted_time)
+
+    plt.hist([datetime.strptime(t, DATE_FORMAT) for t in timestamps])
+
+    if output_path:
+        plt.savefig(output_path)
+    else:
+        plt.show()
+    return timestamps"
+1339,other,False,"return ( 'Error encountered with object named ""{objname}"".\n' '{objcreate}\n\n' '{message}' ) . format ( objname = self . _brian_objname , message = self . _brian_message , objcreate = self . _brian_objcreate )","return ( 'Error encountered with object named ""{objname}"".\n' '{objcreate}\n\n' '{message} ' '(See above for original error message and traceback.)' ) . format ( objname = self . _brian_objname , message = self . _brian_message , objcreate = self . _brian_objcreate )"
+1340,other,False,"q = { 'content_oid' : ObjectId ( _id ) , 'type' : 'general' , 'enabled' : False }","q = { 'content_oid' : content [ '_id' ] , 'type' : 'general' , 'enabled' : True }"
+1341,other,False,"errors . append ( '{username}: {flag}' . format ( username = row [ 0 ] , flag = row [ 1 ] ) )",errors . append ( u'{username}: {flag}' . format ( ** row ) )
+1342,other,True,"self . log . write ( 'error' , 'found only %2d elements, NOK' % len ( link_ ) )","self . log . write ( 'error' , 'found only %2d elements, NOK' % len ( link_ ) )"
+1343,other,False,if not is_player_active ( ) and not is_player_in_game ( ) : reload_simple_pvr ( ),if not is_playing_service ( ) : reload_simple_pvr ( )
+1344,unknown,False,"class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u] = [v]
+            ans.append(bfs(0))
+        return ans","class Solution:
+    def shortestDistanceAfterQueries(
+        self, n: int, queries: List[List[int]]
+    ) -> List[int]:
+        def bfs(i: int) -> int:
+            q = deque([i])
+            vis = [False] * n
+            vis[i] = True
+            d = 0
+            while 1:
+                for _ in range(len(q)):
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                d += 1
+
+        g = [[i + 1] for i in range(n - 1)]
+        ans = []
+        for u, v in queries:
+            g[u].append(v)
+            ans.append(bfs(0))
+        return ans"
+1345,other,False,"raise ValidationError ( _ ( ""There already exists a team with that login"" ) )","raise ValidationError ( _ ( ""There already exists "" ""a team with that login"" ) )"
+1346,other,False,max_char_length = max ( max ( [ [ len ( char_lst ) for char_lst in word_lst ] for word_lst in contents ] ) or [ 0 ] ),max_char_length = max ( [ max ( len ( char_lst ) for char_lst in word_lst ) for word_lst in contents ] )
+1347,logic,True,"app . run ( debug = False , host = ""0.0.0.0"" , port = 5010 )","app . run ( debug = False , host = ""0.0.0.0"" , port = 5010 )"
+1348,other,False,scale = 2 / ( in_channels * kernel_size [ 0 ] * kernel_size [ 0 ] ),scale = 2 / sqrt ( in_channels * kernel_size [ 0 ] * kernel_size [ 1 ] )
+1349,other,False,"uri = 'data:text/plain;base64,' + base64 . b64encode ( data ) . decode ( 'utf-8' )","uri = 'data:application/octet-stream;base64,' + base64 . b64encode ( data ) . decode ( 'ascii' )"
